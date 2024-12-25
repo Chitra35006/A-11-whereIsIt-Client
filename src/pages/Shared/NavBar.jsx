@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/search.png'
 import { motion, MotionConfig } from "motion/react"
 import { easeOut } from 'motion';
@@ -74,7 +74,7 @@ const NavBar = () => {
            </>
          ):
          (
-          <a href="/signIn" className="btn  border-red-800 border text-red-800 hover:text-white hover:bg-gradient-to-r from-red-500 via-red-600 to-red-900 ">Login</a>
+          <Link to="/signIn" className="btn border-red-800 border text-red-800 hover:text-white hover:bg-gradient-to-r from-red-500 via-red-600 to-red-900 ">Login</Link>
          )
 
          }

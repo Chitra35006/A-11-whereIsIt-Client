@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
 import { FaGoogle } from "react-icons/fa";
+import { Helmet } from 'react-helmet-async';
 
 const SignIn = () => {
     const{signInUser,setUser,signInWithGoogle} = useAuth();
@@ -71,6 +72,7 @@ const SignIn = () => {
     }
     return (
         <div className="min-h-screen flex justify-center items-center">
+          <Helmet><title>Login Page</title></Helmet>
       <div className="card border-l-4 border-red-800 bg-[linear-gradient(25deg,#fdba74_5%,_white_30%,_white_70%,#f4f4f5_100%)]  w-full max-w-lg shrink-0 shadow-2xl p-10">
         <h2 className="font-semibold text-2xl text-center text-red-800 mt-5">Login Your Account</h2>
         <form onSubmit={handleSignIn} className="card-body">

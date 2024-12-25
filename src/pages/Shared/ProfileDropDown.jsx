@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const ProfileDropDown = ({user}) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);  // To toggle dropdown visibility
@@ -28,13 +28,13 @@ const ProfileDropDown = ({user}) => {
           <div className="absolute right-0 mt-2 bg-red-100 opacity-60 text-black shadow-lg rounded-lg w-48 p-2">
             <ul className='font-semibold space-y-2'>
               <li>
-                <a href="/profile" className=" font-bold text-red-800  px-4 py-2 hover:bg-red-700 hover:text-white md:text-base text-[12px] ">Add Lost & Found Item</a>
+                <Link to="/addAItems" className=" font-bold text-red-800  px-4 py-2 hover:bg-red-700 hover:text-white md:text-base text-[12px] ">Add Lost & Found Item</Link>
               </li>
               <li>
-                <a href="/settings" className=" font-bold text-red-800 px-4 py-2 hover:bg-red-700 hover:text-white md:text-base text-[12px] ">All Recovered Item</a>
+                <Link to="/settings" className=" font-bold text-red-800 px-4 py-2 hover:bg-red-700 hover:text-white md:text-base text-[12px] ">All Recovered Item</Link>
               </li>
               <li>
-                <a href="/logout" className=" font-bold text-red-800 px-4 py-2 hover:bg-red-700 hover:text-white md:text-base text-[12px] ">Manage My Item</a>
+                <Link to="/logout" className=" font-bold text-red-800 px-4 py-2 hover:bg-red-700 hover:text-white md:text-base text-[12px] ">Manage My Item</Link>
               </li>
             </ul>
           </div>

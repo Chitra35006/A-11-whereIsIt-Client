@@ -6,6 +6,7 @@ import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home/Home";
 import SignIn from "../pages/SignIn";
 import Register from "../pages/Register";
+import AddLostFoundItem from "../pages/AddLostFoundItem/AddLostFoundItem";
 
   const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ import Register from "../pages/Register";
         {
             path:'/signUp',
             element:<Register></Register>
+        },
+        {
+          path:'/addAItems',
+          element:<AddLostFoundItem></AddLostFoundItem>
         }
       ]
     },

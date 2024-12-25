@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -50,15 +51,7 @@ const Register = () => {
           text: `Welcome, ${user.email}!`,
           confirmButtonText: 'OK',
         });
-        //updateProfile
-      updateUserProfile({
-        displayName: name,
-        photoURL: photoUrl,}).then(()=>{
-          navigate("/");
-        }).catch(err=>{
-          console.log("ERROR",err);
-      })
-      console.log(user);
+        
       }
       
     })
@@ -78,6 +71,7 @@ const Register = () => {
       }
     return (
         <div className="min-h-screen flex justify-center items-center">
+          <Helmet><title>Sign Up</title></Helmet>
         <div className="card border-l-4 border-red-800 bg-[linear-gradient(25deg,#fdba74_5%,_white_30%,_white_70%,#f4f4f5_100%)]  w-full max-w-lg shrink-0 shadow-2xl p-10">
           <h2 className="font-semibold text-2xl text-red-800 text-center mt-5 ">
             Register Your Account
