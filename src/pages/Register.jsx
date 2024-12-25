@@ -1,10 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 
 
 const Register = () => {
     const [errorMessage, setErrorMessage] = useState(null);
+    const{createUser,setUser}= useAuth();
     const handleSignUp =(e) =>{
         e.preventDefault();
         const form = e.target;
@@ -16,57 +19,49 @@ const Register = () => {
         const user2 ={name,email}
         console.log(user);
   
-        //validation
-        setErrorMessage('');
-        if(password.length < 6){
-          setErrorMessage('Must be at least 6 characters long');
-          return;
-        }
-        
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
-        if(!passwordRegex.test(password)){
-          setErrorMessage('include at least one uppercase and one lowercase letter')
-          return;
-        }
-  
-        //createUser
-        // createUser(email,password)
-        // .then(result =>{
-        //   // console.log(result.user);
-        //   setUser(user);
-        //   console.log(user);
-        //   if(result.user?.uid){
-        //     Swal.fire({
-        //       icon: "success",
-        //       title: "Registration Successful!",
-        //       text: `Welcome, ${user.email}!`,
-        //       confirmButtonText: "OK",
-        //     });
-        //   }
-          //updateProfile
-        //   updateUserProfile({
-        //     displayName: name,
-        //     photoURL: photoUrl,}).then(()=>{
-        //       navigate("/");
-        //     }).catch(err=>{
-        //       console.log("ERROR",err);
-        //   })
-        //   console.log(user);
-  
-          
-  
-        // })
-        // .catch((err)=>{
-        //   const errorCode = err.code;
-        //   const errorMessage = err.message;
-        //   console.log(errorCode,errorMessage);
-        //   if (errorCode === "auth/email-already-in-use") {
-        //     setErrorMessage("This email address is already in use. Please try logging in or use a different email for sign up.");
-        //   } else {
-        //     setErrorMessage("An error occurred. Please try again.");
-        //   }
-        // })
-  
+        // Reset error message
+  setErrorMessage('');
+
+  // Password validation
+  if (password.length < 6) {
+    setErrorMessage('Password must be at least 6 characters long');
+    return;
+  }
+
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
+  if (!passwordRegex.test(password)) {
+    setErrorMessage('Password must include at least one uppercase and one lowercase letter');
+    return;
+  }
+
+  // Create User
+  createUser(email, password)
+    .then((result) => {
+      console.log('User created:', result.user);
+      form.reset(); // Reset form fields
+      setUser(user); // Set user data to the state
+      console.log(user);
+
+      if (result.user?.uid) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Registration Successful!',
+          text: `Welcome, ${user.email}!`,
+          confirmButtonText: 'OK',
+        });
+      }
+    })
+    .catch((err) => {
+      const errorCode = err.code;
+      const errorMessage = err.message;
+      console.log(errorCode, errorMessage);
+      
+      if (errorCode === 'auth/email-already-in-use') {
+        setErrorMessage('This email address is already in use. Please try logging in or use a different email for sign up.');
+      } else {
+        setErrorMessage('An error occurred. Please try again.');
+      }
+    });
         
         
       }
