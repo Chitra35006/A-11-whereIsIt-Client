@@ -10,6 +10,7 @@ import AddLostFoundItem from "../pages/AddLostFoundItem/AddLostFoundItem";
 import LostFoundAllItem from "../pages/Lost&FoundPage/LostFoundAllItem";
 import ManageMyItem from "../pages/ManageMyItem/ManageMyItem";
 import RecoveredItem from "../pages/RecoveredItemPage/RecoveredItem";
+import UpdatePost from "../pages/UpdatePost/UpdatePost";
 
   const router = createBrowserRouter([
     {
@@ -47,6 +48,12 @@ import RecoveredItem from "../pages/RecoveredItemPage/RecoveredItem";
         {
           path:'/recoveredItems',
           element:<RecoveredItem></RecoveredItem>
+        },
+        {
+          path:'/posting/:id',
+          element:<UpdatePost></UpdatePost>,
+          loader:({params}) => fetch(`http://localhost:5000/posting/${params.id}`)
+
         }
       ]
     },

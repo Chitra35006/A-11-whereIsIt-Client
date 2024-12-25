@@ -117,7 +117,7 @@ const ManageMyItem = () => {
           <td>
             <div className="flex gap-4">
               <button className="bg-orange-300 text-blue-950 font-bold px-4 py-2 rounded">
-                <Link to={`/update/${post._id}`}>UPDATE</Link>
+                <Link to={`/posting/${post._id}`}>UPDATE</Link>
               </button>
               <button onClick={()=>handleDelete(post._id)} className="font-bold bg-gradient-to-r from-red-300 to-rose-400 text-red-900 hover:text-rose-500 px-4 py-2 rounded">
                 X
