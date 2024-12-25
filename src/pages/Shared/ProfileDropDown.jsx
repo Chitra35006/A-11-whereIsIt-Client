@@ -31,10 +31,10 @@ const ProfileDropDown = ({user}) => {
                 <Link to="/addAItems" className=" font-bold text-red-800  px-4 py-2 hover:bg-red-700 hover:text-white md:text-base text-[12px] ">Add Lost & Found Item</Link>
               </li>
               <li>
-                <Link to="/settings" className=" font-bold text-red-800 px-4 py-2 hover:bg-red-700 hover:text-white md:text-base text-[12px] ">All Recovered Item</Link>
+                <Link to="/recoveredItems" className=" font-bold text-red-800 px-4 py-2 hover:bg-red-700 hover:text-white md:text-base text-[12px] ">All Recovered Item</Link>
               </li>
               <li>
-                <Link to="/logout" className=" font-bold text-red-800 px-4 py-2 hover:bg-red-700 hover:text-white md:text-base text-[12px] ">Manage My Item</Link>
+                <Link to="/manageMyItems" className=" font-bold text-red-800 px-4 py-2 hover:bg-red-700 hover:text-white md:text-base text-[12px] ">Manage My Item</Link>
               </li>
             </ul>
           </div>

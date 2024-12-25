@@ -18,7 +18,7 @@ const NavBar = () => {
 
     const links = <>
               <li><NavLink className={({ isActive }) => isActive ? "active-link" : "inactive-link"} to="/" >Home</NavLink></li>
-              <li><NavLink className={({ isActive }) => isActive ? "active-link" : "inactive-link"} to="/kkk" >Lost & Found Item</NavLink></li>
+              <li><NavLink className={({ isActive }) => isActive ? "active-link" : "inactive-link"} to="/allItems" >Lost & Found Item</NavLink></li>
 
       
     </>
@@ -62,7 +62,7 @@ const NavBar = () => {
   
         {/* Navbar Center - Desktop Links */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal space-x-4">{links}</ul>
+          <ul className="menu menu-horizontal space-x-4 font-medium text-lg">{links}</ul>
         </div>
   
         {/* Navbar End */}
@@ -74,7 +74,9 @@ const NavBar = () => {
            </>
          ):
          (
-          <Link to="/signIn" className="btn border-red-800 border text-red-800 hover:text-white hover:bg-gradient-to-r from-red-500 via-red-600 to-red-900 ">Login</Link>
+          
+            <Link to="/signIn" ><button className="btn border-red-800 border hover:border-none text-red-800 hover:text-white hover:bg-gradient-to-r from-red-500 via-red-600 to-red-900 ">Login</button></Link>
+          
          )
 
          }

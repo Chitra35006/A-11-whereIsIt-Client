@@ -53,6 +53,15 @@ const Register = () => {
         });
         
       }
+      //updateProfile
+      updateUserProfile({
+        displayName: name,
+        photoURL: photoUrl,}).then(()=>{
+          navigate("/");
+        }).catch(err=>{
+          console.log("ERROR",err);
+      })
+      console.log(user);
       
     })
     .catch((err) => {

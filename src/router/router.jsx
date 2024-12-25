@@ -7,6 +7,9 @@ import Home from "../pages/Home/Home";
 import SignIn from "../pages/SignIn";
 import Register from "../pages/Register";
 import AddLostFoundItem from "../pages/AddLostFoundItem/AddLostFoundItem";
+import LostFoundAllItem from "../pages/Lost&FoundPage/LostFoundAllItem";
+import ManageMyItem from "../pages/ManageMyItem/ManageMyItem";
+import RecoveredItem from "../pages/RecoveredItemPage/RecoveredItem";
 
   const router = createBrowserRouter([
     {
@@ -32,6 +35,18 @@ import AddLostFoundItem from "../pages/AddLostFoundItem/AddLostFoundItem";
         {
           path:'/addAItems',
           element:<AddLostFoundItem></AddLostFoundItem>
+        },
+        {
+          path:'/allItems',
+          element:<LostFoundAllItem></LostFoundAllItem>
+        },
+        {
+          path:'/manageMyItems',
+          element:<ManageMyItem></ManageMyItem>
+        },
+        {
+          path:'/recoveredItems',
+          element:<RecoveredItem></RecoveredItem>
         }
       ]
     },

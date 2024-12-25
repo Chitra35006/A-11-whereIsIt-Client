@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
+import useAuth from '../../hooks/useAuth';
 
 const AddLostFoundItem = () => {
+  const{user} = useAuth();
 
 const [name, setName] = useState("");
 const [email, setEmail] = useState("");
@@ -12,6 +15,13 @@ const[location, setLocation] = useState("");
 const[category, setCategory] = useState("");
 const[title, setTitle] = useState("");
 const[date, setDate] = useState("");
+
+useEffect(() => {
+    if (user) {
+        setName((prev) => prev || user.displayName || "");  
+        setEmail((prev) => prev || user.email || "");  
+    }
+}, [user])
 
 const resetForm = () => {
   setTitle("");
@@ -24,6 +34,8 @@ const resetForm = () => {
   setDate("");
   setLocation("");
 };
+
+
 
     const handleSubmit=e=>{
         e.preventDefault();
@@ -39,6 +51,28 @@ const resetForm = () => {
             date
         }
         console.log(postData);
+        //send Data to Server
+        fetch('http://localhost:5000/addPost',{
+          method: "POST",
+          headers:{
+              'content-type': 'application/json'
+          },
+          body: JSON.stringify(postData)
+        })
+        .then(res=> res.json())
+      .then(data =>{
+        
+        if(data.insertedId){
+            Swal.fire({
+                title: 'Success',
+                text: 'Post Added Successfully',
+                icon: 'success',
+                confirmButtonText: 'OK'
+              })
+        }
+        resetForm();
+    })
+
     }
     return (
         <div>
@@ -183,7 +217,7 @@ const resetForm = () => {
                     <option id="0" value="" disabled>Category Type</option>
                     <option id="1" value="Lost">Pet</option>
                     <option id="2" value="Found">Document</option>
-                    <option id="2" value="Found">Gadget</option>
+                    <option id="3" value="Found">Gadget</option>
                   </select>
                 </div>
               </div>
@@ -194,7 +228,7 @@ const resetForm = () => {
                     htmlFor="date"
                     className="block text-sm font-medium  text-gray-700"
                   >
-                    Date
+                    Date[Found/Lost]
                   </label>
                   <input value={date} onChange={(e)=> setDate(e.target.value)} type="date" name='applicationDeadline' placeholder="Lost/Founded Date" className="input input-bordered" required />
                 </div>
