@@ -71,7 +71,7 @@ const Description = () => {
             delay: 3000,
             disableOnInteraction: false,
           }}
-          className="h-[300px] md:h-[400px] lg:h-[400px] mt-5"
+          className="h-[250px] md:h-[400px] lg:h-[400px] mt-5"
         >
           {/* Swiper Slide with Animated Image */}
           <SwiperSlide>
@@ -100,7 +100,7 @@ const Description = () => {
 
         {/* catCards */}
     {/* catCards */}
-<div className="bg-gray-600 h-[250px] text-white p-4 rounded-lg shadow-md relative overflow-hidden">
+<div className="bg-gray-600 md:h-[250px] h-[200px] text-white p-4 rounded-lg shadow-md relative overflow-hidden">
   {/* Static Text (Overlayed on Image) */}
   <p className="text-sm absolute bottom-16 left-4 right-4 z-10">
     "Found a pet near Uttara Block A"
@@ -143,7 +143,7 @@ const Description = () => {
  
  
         {/* dc Cards */}
-        <div className="bg-red-600 h-[250px] text-white p-4 rounded-lg shadow-md">
+        <div className="bg-red-600 md:h-[250px] h-[200px] text-white p-4 rounded-lg shadow-md">
           <h3 className="text-2xl text-black font-bold">80%</h3>
           <p className="text-sm mt-1">has found their missing document</p>
           <p className="text-sm">Find Your Document</p>
@@ -152,7 +152,7 @@ const Description = () => {
         </div>
         {/* p1 Cards */}
 
-        <div className="bg-gray-600 h-[250px] text-white p-4 rounded-lg shadow-md relative overflow-hidden">
+        <div className="bg-gray-600 md:h-[250px] h-[200px] text-white p-4 rounded-lg shadow-md relative overflow-hidden">
   {/* Static Text (Overlayed on Image) */}
   <p className="text-sm absolute bottom-16 left-4 right-4 z-10">
     "Lost A Wallet in Uposohor Sylhet B[D]"

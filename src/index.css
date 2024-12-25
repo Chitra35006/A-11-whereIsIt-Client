@@ -6,5 +6,19 @@
 a.active{
   background-color: violet;
   font-weight: bold;
-  border-bottom: 8px solid rgb(166, 190, 241);;
+  border-bottom: 8px solid rgb(204, 24, 24);
+  font-weight: bold;
+  color: orange;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  background-color: rgb(221, 97, 97); /* Hover background color */
+  font-weight: bold;/* Same border as active */
+  padding: 5px;
+  border-radius: 4px; 
+  color: white;/* Optional: Add rounded corners */
 }

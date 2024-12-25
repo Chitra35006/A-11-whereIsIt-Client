@@ -3,17 +3,23 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../assets/search.png'
 import { motion, MotionConfig } from "motion/react"
 import { easeOut } from 'motion';
+import useAuth from '../../hooks/useAuth';
+import ProfileDropDown from './ProfileDropDown';
+import './NavBar.css'
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
+
+    const{user,logOut} = useAuth();
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
       };
 
     const links = <>
-       <li><NavLink className={({ isActive }) => isActive ? "active-link" : "inactive-link"} to="/" >Home</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? "active-link" : "inactive-link"} to="/allItems" >Lost & Found Item</NavLink></li>
+              <li><NavLink className={({ isActive }) => isActive ? "active-link" : "inactive-link"} to="/" >Home</NavLink></li>
+              <li><NavLink className={({ isActive }) => isActive ? "active-link" : "inactive-link"} to="/kkk" >Lost & Found Item</NavLink></li>
+
       
     </>
     return (
@@ -61,13 +67,23 @@ const NavBar = () => {
   
         {/* Navbar End */}
         <div className="navbar-end">
+         { user && user?.email?(
+           <>
+           <ProfileDropDown user={user}></ProfileDropDown>
+           <button onClick={logOut} className="btn ml-2 text-white hover:text-yellow-200  bg-gradient-to-r from-red-500 via-red-600 to-red-900 ">Logout</button>
+           </>
+         ):
+         (
           <a href="/signIn" className="btn  border-red-800 border text-red-800 hover:text-white hover:bg-gradient-to-r from-red-500 via-red-600 to-red-900 ">Login</a>
+         )
+
+         }
         </div>
   
         {/* Mobile Dropdown */}
         {isOpen && (
           <div className="absolute top-16 left-0 w-full lg:hidden">
-            <ul className="menu p-4 bg-pink-200 rounded-lg shadow-md">{links}</ul>
+            <ul className="menu p-4 text-[10px]  text-red-800 font-bold bg-red-100   rounded-lg shadow-md">{links}</ul>
           </div>
         )}
       </div>

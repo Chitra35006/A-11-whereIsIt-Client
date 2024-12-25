@@ -1,0 +1,33 @@
+.active-link {
+
+  font-weight: bold;
+  border-bottom: 4px solid rgb(243, 160, 66);
+  border-right: 4px solid rgb(243, 160, 66);
+  font-weight: bold;
+  color: rgb(185, 4, 4);
+    
+}
+.inactive-link:hover{
+
+  font-weight: bold;
+  background-color:rgb(185, 4, 4); ;
+  font-weight: bold;
+  color: white;
+  border: none;
+    
+}
+.active-link:hover{
+  font-weight: bold;
+  background-color:rgb(185, 4, 4); ;
+  font-weight: bold;
+  color: white;
+  border: none;
+    
+}
+.inactive-link {
+    color: gray;
+    font-weight: semi-bold;
+}
+/* @media screen and (max-width: 576px){
+
+} */

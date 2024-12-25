@@ -7,7 +7,8 @@ import Swal from 'sweetalert2';
 
 const Register = () => {
     const [errorMessage, setErrorMessage] = useState(null);
-    const{createUser,setUser}= useAuth();
+    const navigate = useNavigate();
+    const{createUser,setUser,updateUserProfile}= useAuth();
     const handleSignUp =(e) =>{
         e.preventDefault();
         const form = e.target;
@@ -49,7 +50,17 @@ const Register = () => {
           text: `Welcome, ${user.email}!`,
           confirmButtonText: 'OK',
         });
+        //updateProfile
+      updateUserProfile({
+        displayName: name,
+        photoURL: photoUrl,}).then(()=>{
+          navigate("/");
+        }).catch(err=>{
+          console.log("ERROR",err);
+      })
+      console.log(user);
       }
+      
     })
     .catch((err) => {
       const errorCode = err.code;
