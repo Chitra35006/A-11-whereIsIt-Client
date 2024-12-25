@@ -2,10 +2,24 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
+import { FaGoogle } from "react-icons/fa";
 
 const SignIn = () => {
-    const{signInUser,setUser} = useAuth();
+    const{signInUser,setUser,signInWithGoogle} = useAuth();
     const [errorMessage, setErrorMessage] = useState(null);
+
+    const handleGoogleSignIn =()=>{
+          
+      signInWithGoogle()
+      .then((result) => {
+        console.log("User Info:", result.user);
+        // navigate(location?.state?.from?.pathname || "/"); 
+      })
+      .catch((err) => {
+        console.error("Sign-in Error:", err.message);
+      });
+    }
+
     const handleSignIn = e =>{
       e.preventDefault();
         const form = e.target;
@@ -32,6 +46,9 @@ const SignIn = () => {
           //     navigate(from, { replace: true });
           // })
         }
+
+        //Pop Up
+        
 
       })
       .catch((err)=>{
@@ -88,6 +105,7 @@ const SignIn = () => {
               errorMessage && <p className="p-2 mt-2 font-semibold bg-red-300 text-red-700">{errorMessage}</p>
           }
         </form>
+        <button onClick={handleGoogleSignIn} type="button" className="btn border-none text-orange-900 bg-orange-200 mb-4 hover:bg-red-200 hover:text-red-700"><FaGoogle></FaGoogle> Login With Google</button>
         <p className="text-center text-gray-600 font-semibold">Don't Have a account? <Link className="text-red-800" to="/signUp">Register</Link> </p>
       </div>
     </div>
