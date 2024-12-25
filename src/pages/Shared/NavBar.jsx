@@ -61,7 +61,7 @@ const NavBar = () => {
   
         {/* Navbar End */}
         <div className="navbar-end">
-          <a href="/login" className="btn border-none bg-gradient-to-r from-red-500 via-red-600 to-red-900 text-white hover:text-rose-200 ">Login</a>
+          <a href="/signIn" className="btn  border-red-800 border text-red-800 hover:text-white hover:bg-gradient-to-r from-red-500 via-red-600 to-red-900 ">Login</a>
         </div>
   
         {/* Mobile Dropdown */}
