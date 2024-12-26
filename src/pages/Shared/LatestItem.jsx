@@ -11,7 +11,7 @@ const LatestItem = () => {
   };
 
   return (
-    <div className="w-11/12 my-10 mx-auto">
+    <div className="w-11/12 md:my-10 md:mb-0 mb-6  mx-auto">
       <h1 className="border border-gray-300 md:text-2xl text-xl text-center bg-gray-200 p-2 text-red-800  font-medium md:w-3/12 w-6/12 mb-6">
         Latest Post
       </h1>
