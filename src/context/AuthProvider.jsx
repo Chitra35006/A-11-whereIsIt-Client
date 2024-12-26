@@ -41,31 +41,69 @@ const AuthProvider = ({children}) => {
         return signOut(auth);
     }
 
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
-            setUser(currentUser);
-            console.log('state update',currentUser?.email);
-            if(currentUser?.email){
-                const user = {email: currentUser.email};
+    // useEffect(()=>{
+    //     const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
+    //         setUser(currentUser);
+    //         console.log('state update',currentUser?.email);
+    //         if(currentUser?.email){
+    //             const user = {email: currentUser.email};
 
-                axios.post('https://a-11-where-is-it-server.vercel.app/jwt',user,{withCredentials:true})
-                .then(res => {
-                    setLoading(false);
-                })
-            }
-            else{
-                axios.post('https://a-11-where-is-it-server.vercel.app/logout',{},{withCredentials:true})
-                .then(res => {console.log('LogOut',res.data)
-                    setLoading(false);
-                })
-            }
+    //             axios.post('https://a-11-where-is-it-server.vercel.app/jwt',user,{withCredentials:true})
+    //             .then(res => {
+    //                 setLoading(false);
+    //             })
+    //         }
+    //         else{
+    //             axios.post('https://a-11-where-is-it-server.vercel.app/logout',{},{withCredentials:true})
+    //             .then(res => {console.log('LogOut',res.data)
+    //                 setLoading(false);
+    //             })
+    //         }
             
             
-        })
-        return ()=>{
+    //     })
+    //     return ()=>{
+    //         unsubscribe();
+    //     }
+    // },[])
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            console.log('state update', currentUser?.email);
+    
+            if (currentUser?.email) {
+                const user = { email: currentUser.email };
+    
+                axios.post('https://a-11-where-is-it-server.vercel.app/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log('JWT Success:', res.data);
+                    })
+                    .catch(err => {
+                        console.error('JWT Error:', err);
+                    })
+                    .finally(() => {
+                        setLoading(false);  // Ensure loading stops even if request fails
+                    });
+            } else {
+                axios.post('https://a-11-where-is-it-server.vercel.app/logout', {}, { withCredentials: true })
+                    .then(res => {
+                        console.log('LogOut:', res.data);
+                    })
+                    .catch(err => {
+                        console.error('Logout Error:', err);
+                    })
+                    .finally(() => {
+                        setLoading(false);  // Ensure loading stops even if logout fails
+                    });
+            }
+        });
+    
+        return () => {
             unsubscribe();
-        }
-    },[])
+        };
+    }, []);
+    
 
     const authInfo ={
         createUser,

@@ -10,28 +10,45 @@ const axiosInstance = axios.create({
 
 const useAxiosSecure = () => {
 
-    const {logOut} = useAuth();
-
+    const { logOut } = useAuth();
     const navigate = useNavigate();
 
-    useEffect(()=>{
-        axiosInstance.interceptors.response.use(response => {
-            return response;
-        }, error =>{
-            console.log('Error caught in interceptor',error);
-            if(error.status === 401 || error.status === 403){
-                console.log('need to log out the user');
-                logOut()
-                .then(()=>{
-                    console.log('Logged Out User');
-                    navigate('/signIn')
-                })
+    useEffect(() => {
+        const interceptor = axiosInstance.interceptors.response.use(
+            (response) => response,  // Pass successful responses through
+            (error) => {
+                console.log('Error caught in interceptor:', error);
+
+                // Handle only if response exists
+                if (error.response) {
+                    const status = error.response.status;
+                    
+                    // Check for 401 or 403
+                    if (status === 401 || status === 403) {
+                        console.log('Unauthorized/Forbidden - Logging out user');
+                        
+                        logOut()
+                            .then(() => {
+                                console.log('Logged Out User');
+                                navigate('/signIn');
+                            })
+                            .catch(logOutError => {
+                                console.error('Logout failed:', logOutError);
+                            });
+                    }
+                } else {
+                    console.error('Network/Server Error:', error.message);
+                }
+
+                return Promise.reject(error);  // Always return the error to continue the rejection chain
             }
-            return Promise.reject(error);
-        }
-    
-    )
-    },[])
+        );
+
+        // Eject the interceptor on cleanup to avoid duplicate interceptors
+        return () => {
+            axiosInstance.interceptors.response.eject(interceptor);
+        };
+    }, [logOut, navigate]);
 
     return axiosInstance;
 };

@@ -9,24 +9,24 @@ const RecoveredItem = () => {
     const { user } = useAuth();
     const [rItems, setRitems] = useState([]);
 
-    const axiosSecure = useAxiosSecure();
+    // const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        // if (user?.email) {
-        //     fetch(`https://a-11-where-is-it-server.vercel.app/recoverItem?email=${user.email}`)
-        //         .then(res => res.json())
-        //         .then(data => {
-        //             // Ensure data is always an array
-        //             setRitems(Array.isArray(data) ? data : []);
-        //         })
-        //         .catch(err => {
-        //             console.error('Error fetching recovered items:', err);
-        //             setRitems([]);  // Fallback to empty array on error
-        //         });
-        // }
+        if (user?.email) {
+            fetch(`https://a-11-where-is-it-server.vercel.app/recoverItem?email=${user.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    // Ensure data is always an array
+                    setRitems(Array.isArray(data) ? data : []);
+                })
+                .catch(err => {
+                    console.error('Error fetching recovered items:', err);
+                    setRitems([]);  // Fallback to empty array on error
+                });
+        }
 
-        axiosSecure.get(`/recoverItem?email=${user.email}`)
-        .then(res => setRitems(res.data))
+        // axiosSecure.get(`/recoverItem?email=${user.email}`)
+        // .then(res => setRitems(res.data))
         
     }, [user?.email]);
 

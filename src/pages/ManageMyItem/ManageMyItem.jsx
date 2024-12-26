@@ -10,19 +10,19 @@ const ManageMyItem = () => {
     const{user} = useAuth();
     const [posts,setPosts] = useState([]);
 
-    const axiosSecure = useAxiosSecure();
+    // const axiosSecure = useAxiosSecure();
 
     const fetchPost=()=>{
-        // if(user?.email){
-        // fetch(`https://a-11-where-is-it-server.vercel.app/myPosts?email=${user.email}`)
-        // .then(res => res.json())
-        // .then(data => setPosts(data))
-        // }
+        if(user?.email){
+        fetch(`https://a-11-where-is-it-server.vercel.app/myPosts?email=${user.email}`)
+        .then(res => res.json())
+        .then(data => setPosts(data))
+        }
         // axios.get(`https://a-11-where-is-it-server.vercel.app/myPosts?email=${user.email}`,{withCredentials:true})
         // .then(res => setPosts(res.data))
 
-       axiosSecure.get(`/myPosts?email=${user.email}`)
-       .then(res => setPosts(res.data))
+      //  axiosSecure.get(`/myPosts?email=${user.email}`)
+      //  .then(res => setPosts(res.data))
       }
 
     useEffect(()=>{
