@@ -48,7 +48,7 @@ const AuthProvider = ({children}) => {
     //         if(currentUser?.email){
     //             const user = {email: currentUser.email};
 
-    //             axios.post('https://a-11-where-is-it-server.vercel.app/jwt',user,{withCredentials:true})
+    //             axios.post('',user,{withCredentials:true})
     //             .then(res => {
     //                 setLoading(false);
     //             })
@@ -66,43 +66,15 @@ const AuthProvider = ({children}) => {
     //         unsubscribe();
     //     }
     // },[])
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    useEffect(()=>{
+        const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
             setUser(currentUser);
-            console.log('state update', currentUser?.email);
-    
-            if (currentUser?.email) {
-                const user = { email: currentUser.email };
-    
-                axios.post('https://a-11-where-is-it-server.vercel.app/jwt', user, { withCredentials: true })
-                    .then(res => {
-                        console.log('JWT Success:', res.data);
-                    })
-                    .catch(err => {
-                        console.error('JWT Error:', err);
-                    })
-                    .finally(() => {
-                        setLoading(false);  // Ensure loading stops even if request fails
-                    });
-            } else {
-                axios.post('https://a-11-where-is-it-server.vercel.app/logout', {}, { withCredentials: true })
-                    .then(res => {
-                        console.log('LogOut:', res.data);
-                    })
-                    .catch(err => {
-                        console.error('Logout Error:', err);
-                    })
-                    .finally(() => {
-                        setLoading(false);  // Ensure loading stops even if logout fails
-                    });
-            }
-        });
-    
-        return () => {
+            setLoading(false);
+        })
+        return ()=>{
             unsubscribe();
-        };
-    }, []);
+        }
+    },[])
     
 
     const authInfo ={
