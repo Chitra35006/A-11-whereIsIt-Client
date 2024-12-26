@@ -11,6 +11,8 @@ import LostFoundAllItem from "../pages/Lost&FoundPage/LostFoundAllItem";
 import ManageMyItem from "../pages/ManageMyItem/ManageMyItem";
 import RecoveredItem from "../pages/RecoveredItemPage/RecoveredItem";
 import UpdatePost from "../pages/UpdatePost/UpdatePost";
+import DetailsPage from "../pages/DetailsPage/DetailsPage";
+import Four04Page from "../pages/Shared/Four04Page";
 
   const router = createBrowserRouter([
     {
@@ -19,7 +21,8 @@ import UpdatePost from "../pages/UpdatePost/UpdatePost";
       children:[
         {
             path:'/',
-            element:<Home></Home>
+            element:<Home></Home>,
+            loader:()=>fetch('http://localhost:5000/latestPost')
         },
         // {
         //     path: '',
@@ -42,6 +45,11 @@ import UpdatePost from "../pages/UpdatePost/UpdatePost";
           element:<LostFoundAllItem></LostFoundAllItem>
         },
         {
+          path:'/allPostViewDetails/:id',
+          element:<DetailsPage></DetailsPage>,
+          loader:({params})=> fetch(`http://localhost:5000/addPost/${params.id}`)
+        },
+        {
           path:'/manageMyItems',
           element:<ManageMyItem></ManageMyItem>
         },
@@ -59,7 +67,7 @@ import UpdatePost from "../pages/UpdatePost/UpdatePost";
     },
     {
       path: "*",
-      element: <div>I am in the about page</div>
+      element: <Four04Page></Four04Page>
     }
   ])
 

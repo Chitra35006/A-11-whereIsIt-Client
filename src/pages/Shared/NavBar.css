@@ -1,10 +1,12 @@
 .active-link {
-
   font-weight: bold;
   border-bottom: 4px solid rgb(185, 4, 4);
   border-right: 4px solid rgb(185, 4, 4);
   font-weight: bold;
   color: rgb(185, 4, 4);
+  outline: none;
+  padding: 0 10px; /* Same padding to avoid shifting */
+  display: inline-block;
     
 }
 .inactive-link:hover{
@@ -14,6 +16,9 @@
   font-weight: bold;
   color: white;
   border: none;
+  outline: none;
+  padding: 0 10px; /* Same padding to avoid shifting */
+  display: inline-block;
     
 }
 .active-link:hover{
@@ -22,12 +27,30 @@
   font-weight: bold;
   color: white;
   border: none;
+  outline: none;
+  padding: 0 10px; /* Same padding to avoid shifting */
+  display: inline-block;
+  
     
 }
 .inactive-link {
-    color: gray;
+    color: rgb(17, 1, 73);
     font-weight: semi-bold;
+    padding: 0 10px; /* Same padding to avoid shifting */
+    display: inline-block;
 }
+
+.inactive-link:focus{
+  outline: none;
+  padding: 0 10px; /* Same padding to avoid shifting */
+  display: inline-block;
+}
+.active-link:focus{
+  outline: none;  
+  padding: 0 10px; /* Same padding to avoid shifting */
+  display: inline-block;
+}
+
 /* @media screen and (max-width: 576px){
 
 } */

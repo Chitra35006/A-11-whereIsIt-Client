@@ -24,7 +24,7 @@ const Description = () => {
             className="w-full h-64 object-cover"
           />
           <div className="p-4 relative">
-            <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-full text-xs">
+            <div className="absolute top-4 right-4 bg-blue-950 text-white px-3 py-1 rounded-full text-xs">
               21 Jan
             </div>
             <h3 className="text-xl font-bold text-gray-800">
@@ -55,9 +55,9 @@ const Description = () => {
         {/* dog Cards */}
         <div className="bg-gray-200 p-4 rounded-lg shadow-md">
         {/* Static Text Content */}
-        <p className="text-sm text-center bg-red-500 text-white px-3 py-1 rounded-full sm:mb-4 mb-2">22 Dec</p>
+        <p className="text-sm text-center bg-indigo-950 text-white px-3 py-1 rounded-full sm:mb-4 mb-2">22 Dec</p>
         <h3 className="sm:text-lg text-[12px] font-semibold">A Pet is Missing</h3>
-        <p className="sm:text-sm text-[10px] text-red-800">Name: Jimmy</p>
+        <p className="sm:text-sm font-semibold text-[10px] text-red-800">Name: Jimmy</p>
   
         {/* Swiper for Sliding Images */}
         <Swiper

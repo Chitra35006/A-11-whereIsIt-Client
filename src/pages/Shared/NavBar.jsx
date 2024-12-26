@@ -23,7 +23,7 @@ const NavBar = () => {
       
     </>
     return (
-        <div className="navbar bg-[#f7eff3] shadow-md fixed  top-0 left-0 w-full  z-50">
+        <div className="navbar bg-[#f7eff3] shadow-md fixed top-0 left-0 right-0 z-50 w-full">
         {/* Navbar Start */}
         <div className="navbar-start">
           

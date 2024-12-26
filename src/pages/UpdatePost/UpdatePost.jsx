@@ -27,6 +27,7 @@ const UpdatePost = () => {
 
     const handleUpdateData =(e)=>{
         e.preventDefault();
+        const formattedDate = date.toISOString().split('T')[0];
         const data={
             post,
             photo,
@@ -36,7 +37,7 @@ const UpdatePost = () => {
             email,
             category,
             description,
-            date
+            date:formattedDate
         }
         console.log(data);
         fetch(`http://localhost:5000/posting/${id}`,{
