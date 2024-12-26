@@ -98,7 +98,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <p className="text-gray-400 text-sm mt-4 md:mt-0">
-            © 2024 Crowd Cube. All Rights Reserved.
+            © 2024 WhereIsIt. All Rights Reserved.
           </p>
         </div>
       </div>

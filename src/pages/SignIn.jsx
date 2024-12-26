@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
 import { FaGoogle } from "react-icons/fa";
@@ -8,6 +8,11 @@ import { Helmet } from 'react-helmet-async';
 const SignIn = () => {
     const{signInUser,setUser,signInWithGoogle} = useAuth();
     const [errorMessage, setErrorMessage] = useState(null);
+
+    const location = useLocation();
+    console.log(location);
+
+    const navigate = useNavigate();
 
     const handleGoogleSignIn =()=>{
           
@@ -42,10 +47,10 @@ const SignIn = () => {
             text: `Welcome, ${user.email}!`,
             confirmButtonText: "OK",
           })
-          // .then(()=>{
-          //   const from = location.state?.from?.pathname || "/";
-          //     navigate(from, { replace: true });
-          // })
+          .then(()=>{
+            const from = location.state?.from?.pathname || "/";
+              navigate(from, { replace: true });
+          })
         }
 
         //Pop Up

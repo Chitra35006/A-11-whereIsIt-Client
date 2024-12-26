@@ -7,7 +7,7 @@ import { GiShakingHands } from "react-icons/gi";
 
 const Unity = () => {
     return (
-        <div className="p-8 rounded-lg mx-auto w-11/12 mt my-20 bg-slate-90"> 
+        <div className="p-8 rounded-lg mx-auto w-11/12 mt my-20 bg-slate-50"> 
         
         <h2 className="text-center mx-auto p-2 rounded-md text-2xl mb-4 font-bold bg-gradient-to-r from-orange-400 via-orange-600 to-red-600 text-white md:w-1/4 w-full">Our Goals</h2>
         <p className='text-center'>Let's build a new nation by spreading love and kindness, fostering unity, sharing knowledge, and helping each other in every situation</p>

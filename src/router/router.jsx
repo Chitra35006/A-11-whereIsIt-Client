@@ -13,6 +13,7 @@ import RecoveredItem from "../pages/RecoveredItemPage/RecoveredItem";
 import UpdatePost from "../pages/UpdatePost/UpdatePost";
 import DetailsPage from "../pages/DetailsPage/DetailsPage";
 import Four04Page from "../pages/Shared/Four04Page";
+import PrivateRoute from "./PrivateRoute";
 
   const router = createBrowserRouter([
     {
@@ -22,7 +23,7 @@ import Four04Page from "../pages/Shared/Four04Page";
         {
             path:'/',
             element:<Home></Home>,
-            loader:()=>fetch('http://localhost:5000/latestPost')
+            loader:()=>fetch('https://a-11-where-is-it-server.vercel.app/latestPost')
         },
         // {
         //     path: '',
@@ -38,7 +39,7 @@ import Four04Page from "../pages/Shared/Four04Page";
         },
         {
           path:'/addAItems',
-          element:<AddLostFoundItem></AddLostFoundItem>
+          element:<PrivateRoute><AddLostFoundItem></AddLostFoundItem></PrivateRoute>
         },
         {
           path:'/allItems',
@@ -46,21 +47,21 @@ import Four04Page from "../pages/Shared/Four04Page";
         },
         {
           path:'/allPostViewDetails/:id',
-          element:<DetailsPage></DetailsPage>,
-          loader:({params})=> fetch(`http://localhost:5000/addPost/${params.id}`)
+          element:<PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
+          loader:({params})=> fetch(`https://a-11-where-is-it-server.vercel.app/addPost/${params.id}`)
         },
         {
           path:'/manageMyItems',
-          element:<ManageMyItem></ManageMyItem>
+          element:<PrivateRoute><ManageMyItem></ManageMyItem></PrivateRoute>
         },
         {
           path:'/recoveredItems',
-          element:<RecoveredItem></RecoveredItem>
+          element:<PrivateRoute><RecoveredItem></RecoveredItem></PrivateRoute>
         },
         {
           path:'/posting/:id',
-          element:<UpdatePost></UpdatePost>,
-          loader:({params}) => fetch(`http://localhost:5000/posting/${params.id}`)
+          element:<PrivateRoute><UpdatePost></UpdatePost></PrivateRoute>,
+          loader:({params}) => fetch(`https://a-11-where-is-it-server.vercel.app/posting/${params.id}`)
 
         }
       ]

@@ -3,18 +3,27 @@ import { Helmet } from 'react-helmet-async';
 import useAuth from '../../hooks/useAuth';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import axios from 'axios';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const ManageMyItem = () => {
     const{user} = useAuth();
     const [posts,setPosts] = useState([]);
 
+    const axiosSecure = useAxiosSecure();
+
     const fetchPost=()=>{
-        if(user?.email){
-        fetch(`http://localhost:5000/myPosts?email=${user.email}`)
-        .then(res => res.json())
-        .then(data => setPosts(data))
-        }
-    }
+        // if(user?.email){
+        // fetch(`https://a-11-where-is-it-server.vercel.app/myPosts?email=${user.email}`)
+        // .then(res => res.json())
+        // .then(data => setPosts(data))
+        // }
+        // axios.get(`https://a-11-where-is-it-server.vercel.app/myPosts?email=${user.email}`,{withCredentials:true})
+        // .then(res => setPosts(res.data))
+
+       axiosSecure.get(`/myPosts?email=${user.email}`)
+       .then(res => setPosts(res.data))
+      }
 
     useEffect(()=>{
         fetchPost();
@@ -31,7 +40,7 @@ const ManageMyItem = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/myPosts/${id}`, {
+                fetch(`https://a-11-where-is-it-server.vercel.app/myPosts/${id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())
