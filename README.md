@@ -1,4 +1,7 @@
 # Project Name: WhereIsIt (A Find and Lost items related website)
+ <div align="center">
+  <img height="500" width="100%" src="https://github.com/Chitra35006/5_practice/blob/a8bc780bcb15c9a72e3f329ff3ace1d91051c2fc/w1.png" />
+</div>
 ## :::Description:::
 This project is a Lost and Found Website, a platform designed to connect individuals who have lost 
 personal belongings with those who may have found them. Users can report lost items, browse found 
@@ -17,30 +20,98 @@ integration
 8. User Friendly Interactivity
 9. Search Item Based on title & Location
 
-## :::Technologies Used:::
->> Frontend: React.js, TailwindCSS
->> Backend: Node.js, Express.js
->> Database: MongoDB
->> Authentication: Firebase Authentication
->> Hosting: Client(Firebase) & Server(Vercel)
+<div style="display: block; width: 100%; margin-bottom: 20px;">
+  <table width="100%" style="border-collapse: collapse;">
+    <tr>
+      <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Category</th>
+      <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Technologies</th>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Frontend</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">React.js, TailwindCSS, Daisy UI</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Backend</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">Node.js, Express.js</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Database</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">MongoDB</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Authentication</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">Firebase Authentication</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Hosting</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">Client (Firebase), Server (Vercel)</td>
+    </tr>
+  </table>
+</div>
 
-## :::Packages Used:::
-● date-fns: ^4.1.0
-● firebase: ^11.1.0
-● localforage: ^1.10.0
-● match-sorter: ^8.0.0
-● motion: ^11.15.0
-● react: ^18.3.1
-● react-awesome-reveal: ^4.3.1
-● react-datepicker: ^7.5.0
-● react-dom: ^18.3.1
-● react-helmet-async: ^2.0.5
-● react-icon: ^5.4.0
-● react-router-dom: ^7.1.1
-● sort-by: ^1.2.0
-● sweetalert2: ^11.15.3
-● swiper: ^11.2.15
+<h3 align="left">::: Dependencies :::</h3>
+
+- @fortawesome/free-solid-svg-icons: ^6.7.1  
+- @fortawesome/react-fontawesome: ^0.2.2  
+- @tippyjs/react: ^4.2.6  
+- date-fns: ^4.1.0  
+- firebase: ^11.0.2  
+- localforage: ^1.10.0  
+- match-sorter: ^8.0.0  
+- react: ^18.3.1  
+- react-awesome-reveal: ^4.2.14  
+- react-axios: ^2.0.6  
 
 
 ## ::: Live Link :::
  https://a-11-whereisit.web.app/
+
+ # 🛠 Setup Instructions
+
+Follow these steps to clone the repository, install dependencies, and run the project on your local machine.
+
+## 1. **Clone the Repository**
+
+Start by cloning the repository to your local machine and navigating into the project directory:
+
+```bash
+git clone https://github.com/Chitra35006/A-11-whereIsIt-Client.git
+cd A-11-whereIsIt-Client
+
+Install the necessary dependencies using your preferred package manager (npm or yarn):
+
+# Using npm
+```bash
+npm install
+
+# Or using yarn
+```bash
+yarn install
+ Create a .env file in the root directory of the project:
+```bash
+touch .env
+Add the following variables to your .env file:
+
+env
+VITE_apiKey=your_api_key
+VITE_authDomain=your_auth_domain
+VITE_projectId=your_project_id
+VITE_storageBucket=your_storage_bucket
+VITE_messagingSenderId=your_messaging_sender_id
+VITE_appId=your_app_id
+VITE_Payment_Gateway_PK=your_payment_gateway_pk
+
+4. Run the Application
+You're all set to run the application locally.
+
+bash
+# Using npm
+npm run dev
+
+# Or using yarn
+yarn
+
+5. Access the Application
+Open your web browser and navigate to:
+
+http://localhost:5173
