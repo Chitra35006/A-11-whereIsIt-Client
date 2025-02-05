@@ -2,6 +2,7 @@
  <div align="center">
   <img height="500" width="100%" src="https://github.com/Chitra35006/5_practice/blob/a8bc780bcb15c9a72e3f329ff3ace1d91051c2fc/w1.png" />
 </div>
+
 ## :::Description:::
 This project is a Lost and Found Website, a platform designed to connect individuals who have lost 
 personal belongings with those who may have found them. Users can report lost items, browse found 
