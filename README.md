@@ -21,6 +21,7 @@ integration
 8. User Friendly Interactivity
 9. Search Item Based on title & Location
 
+<h3 align="left">::: Technologies Used :::</h3>
 <div style="display: block; width: 100%; margin-bottom: 20px;">
   <table width="100%" style="border-collapse: collapse;">
     <tr>
