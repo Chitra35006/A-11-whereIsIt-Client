@@ -19,15 +19,46 @@ const NavBar = () => {
         setIsOpen(!isOpen);
       };
 
-    const links = <>
-              <li><NavLink className={({ isActive }) => isActive ? "active-link" : "inactive-link"} to="/" >Home</NavLink></li>
-              <li><NavLink className={({ isActive }) => isActive ? "active-link" : "inactive-link"} to="/allItems" >Lost & Found Item</NavLink></li>
-              <li><NavLink className={({ isActive }) => isActive ? "active-link" : "inactive-link"} to="/aboutUs" >About Us</NavLink></li>
-
-      
-    </>
+    const links =<>
+    <li>
+      <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? `active-link ${theme === 'dark' ? 'text-indigo-300' : 'text-indigo-950'}`
+            : `inactive-link ${theme === 'dark' ? 'text-indigo-300' : 'text-indigo-950'}`
+        }
+        to="/"
+      >
+        Home
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? `active-link ${theme === 'dark' ? 'text-indigo-300' : 'text-indigo-950'}`
+            : `inactive-link ${theme === 'dark' ? 'text-indigo-300' : 'text-indigo-950'}`
+        }
+        to="/allItems"
+      >
+        Lost & Found Item
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        className={({ isActive }) =>
+          isActive
+            ? `active-link ${theme === 'dark' ? 'text-indigo-300' : 'text-indigo-950'}`
+            : `inactive-link ${theme === 'dark' ? 'text-indigo-300' : 'text-indigo-950'}`
+        }
+        to="/aboutUs"
+      >
+        About Us
+      </NavLink>
+    </li>
+  </>
     return (
-        <div className="navbar bg-[#f7eff3] shadow-md fixed top-0 left-0 right-0 z-50 w-full px-4">
+        <div className={`navbar shadow-md fixed top-0 left-0 right-0 z-50 w-full px-4 ${theme === "dark"?"bg-gray-950" :  "bg-[#f7eff3]"}`}>
         {/* Navbar Start */}
         <div className="navbar-start">
           
@@ -75,7 +106,7 @@ const NavBar = () => {
            <>
            <ProfileDropDown user={user}></ProfileDropDown>
           
-           <button onClick={logOut} className="btn ml-2 text-white hover:text-yellow-200  bg-gradient-to-r from-red-500 via-red-600 to-red-900 ">Logout</button>
+           <button onClick={logOut} className="btn ml-2 text-white hover:text-yellow-200  bg-gradient-to-r from-red-500 via-red-600 to-red-900 border-none">Logout</button>
            </>
          ):
          (
@@ -85,8 +116,8 @@ const NavBar = () => {
          )
 
          }
-          <button onClick={toggleTheme} className="btn btn-ghost ml-2 border-gray-600 rounded-lg">
-    {theme === "dark" ? <FaSun /> : <FaMoon />}
+          <button onClick={toggleTheme} className="btn btn-ghost ml-2 hover:border-red-600  border-gray-600 rounded-lg">
+    {theme === "dark" ? <FaSun className={` ${theme === "dark"? "text-gray-300": "text-black"}`} /> : <FaMoon/>}
   </button>
         </div>
   

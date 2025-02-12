@@ -1,56 +1,46 @@
+/* Active Link Styles */
 .active-link {
   font-weight: bold;
+  color: rgb(185, 4, 4);
   border-bottom: 4px solid rgb(185, 4, 4);
   border-right: 4px solid rgb(185, 4, 4);
-  font-weight: bold;
-  color: rgb(185, 4, 4);
   outline: none;
-  padding: 0 10px; /* Same padding to avoid shifting */
+  padding: 0 10px;
   display: inline-block;
-    
 }
-.inactive-link:hover{
 
-  font-weight: bold;
-  background-color:rgb(185, 4, 4); ;
-  font-weight: bold;
-  color: white;
-  border: none;
-  outline: none;
-  padding: 0 10px; /* Same padding to avoid shifting */
-  display: inline-block;
-    
+/* In Dark Theme, adjust border color and text color */
+body[data-theme="dark"] .active-link {
+  border-color: rgb(85, 85, 255);
+  color: #93c5fd; /* Indigo-200 */
 }
-.active-link:hover{
-  font-weight: bold;
-  background-color:rgb(185, 4, 4); ;
-  font-weight: bold;
-  color: white;
-  border: none;
-  outline: none;
-  padding: 0 10px; /* Same padding to avoid shifting */
-  display: inline-block;
-  
-    
-}
+
+/* Inactive Link Styles */
 .inactive-link {
-    color: rgb(17, 1, 73);
-    font-weight: semi-bold;
-    padding: 0 10px; /* Same padding to avoid shifting */
-    display: inline-block;
+  color: rgb(17, 1, 73);
+  font-weight: semi-bold;
+  padding: 0 10px;
+  display: inline-block;
 }
 
-.inactive-link:focus{
+/* In Dark Theme, inactive link color change */
+body[data-theme="dark"] .inactive-link {
+  color: #93c5fd; /* Indigo-200 */
+}
+
+/* Inactive Link Hover */
+.inactive-link:hover {
+  font-weight: bold;
+  background-color: rgb(185, 4, 4);
+  color: white;
+  border: none;
   outline: none;
-  padding: 0 10px; /* Same padding to avoid shifting */
-  display: inline-block;
-}
-.active-link:focus{
-  outline: none;  
-  padding: 0 10px; /* Same padding to avoid shifting */
+  padding: 0 10px;
   display: inline-block;
 }
 
-/* @media screen and (max-width: 576px){
-
-} */
+/* Dark Theme Hover */
+body[data-theme="dark"] .inactive-link:hover {
+  background-color: rgb(85, 85, 255);
+  color: white;
+}
