@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch, FaCheckCircle, FaBoxOpen } from "react-icons/fa";
 import UseTheme from "../../hooks/UseTheme";
-import Loading from "../../Loading"
+import Loading from "../../Loading";
+import { motion } from "framer-motion";
 
 const TotalItem = () => {
   const [items, setItems] = useState([]);
@@ -31,8 +32,7 @@ const TotalItem = () => {
       className={`w-10/12 mx-auto mt-20 rounded-3xl p-4 
         ${theme === "dark" 
           ? "bg-gradient-to-r from-gray-900 to-indigo-950" 
-          : "bg-indigo-950"}`
-      }
+          : "bg-indigo-950"}`}
     >
       <div className="w-full">
         <h2
@@ -48,43 +48,82 @@ const TotalItem = () => {
       ) : (
         <div className="grid md:grid-cols-3 gap-6 p-6 w-11/12 mx-auto">
           {/* Total Uploaded Items */}
-          <div
-            className={`shadow-md rounded-lg p-6 flex flex-col items-center text-center transition-all duration-300
+          <motion.div
+            className={`shadow-2xl rounded-lg p-6 flex flex-col items-center text-center transition-all duration-300
               ${theme === "dark" 
-                ? "bg-gradient-to-r from-indigo-800 to-indigo-600 text-indigo-200" 
-                : "bg-gradient-to-r from-indigo-100 to-indigo-300 text-indigo-900"}`
-            }
+                ? "bg-gradient-to-r from-indigo-900 to-slate-900 text-indigo-200" 
+                : "bg-gradient-to-r from-indigo-100 to-indigo-300 text-indigo-900"}`}
+            initial={{ opacity: 0, rotate: 0, x: 100, y: -100 }}
+            whileInView={{
+              opacity: 1,
+              rotate: 360, // Rotate in a circular motion
+              x: [100, 0], // X-axis circular movement
+              y: [100, 0], // Y-axis circular movement
+            }}
+            transition={{
+              duration: 1,
+              ease: "easeOut",
+              loop: Infinity, // Loops animation
+              repeatDelay: 1, // Adds a delay between loops
+            }}
+            viewport={{ once: false }} // Make the animation repeat every time the element enters the viewport
           >
             <FaBoxOpen className={`text-5xl mb-3 ${theme === "dark" ? "text-indigo-300" : "text-indigo-600"}`} />
             <h3 className="text-xl font-semibold">Total Uploaded Items</h3>
             <p className="text-2xl font-bold">{totalItems}</p>
-          </div>
+          </motion.div>
 
           {/* Total Lost Items */}
-          <div
-            className={`shadow-md rounded-lg p-6 flex flex-col items-center text-center transition-all duration-300
+          <motion.div
+            className={`shadow-2xl rounded-lg p-6 flex flex-col items-center text-center transition-all duration-300
               ${theme === "dark" 
-                ? "bg-gradient-to-r from-red-800 to-red-600 text-red-200" 
-                : "bg-gradient-to-r from-red-100 to-red-300 text-red-900"}`
-            }
+                ? "bg-gradient-to-r from-red-800 to-slate-900 text-red-200" 
+                : "bg-gradient-to-r from-red-100 to-red-300 text-red-900"}`}
+            initial={{ opacity: 0, rotate: 0, x: -100, y: -100 }}
+            whileInView={{
+              opacity: 1,
+              rotate: 360,
+              x: [100, 0],
+              y: [100, 0],
+            }}
+            transition={{
+              duration: 1,
+              ease: "easeOut",
+              loop: Infinity,
+              repeatDelay: 1,
+            }}
+            viewport={{ once: false }}
           >
             <FaSearch className={`text-5xl mb-3 ${theme === "dark" ? "text-red-300" : "text-red-600"}`} />
             <h3 className="text-xl font-semibold">Lost Items</h3>
             <p className="text-2xl font-bold">{lostItems}</p>
-          </div>
+          </motion.div>
 
           {/* Total Found Items */}
-          <div
-            className={`shadow-md rounded-lg p-6 flex flex-col items-center text-center transition-all duration-300
+          <motion.div
+            className={`shadow-2xl rounded-lg p-6 flex flex-col items-center text-center transition-all duration-300
               ${theme === "dark" 
-                ? "bg-gradient-to-r from-green-800 to-green-600 text-green-200" 
-                : "bg-gradient-to-r from-green-100 to-green-300 text-green-900"}`
-            }
+                ? "bg-gradient-to-r from-green-600 to-slate-900 text-green-200" 
+                : "bg-gradient-to-r from-green-100 to-green-300 text-green-900"}`}
+            initial={{ opacity: 0, rotate: 0, x: 100, y: 100 }}
+            whileInView={{
+              opacity: 1,
+              rotate: 360,
+              x: [100, 0],
+              y: [100, 0],
+            }}
+            transition={{
+              duration: 1,
+              ease: "easeOut",
+              loop: Infinity,
+              repeatDelay: 1,
+            }}
+            viewport={{ once: false }}
           >
             <FaCheckCircle className={`text-5xl mb-3 ${theme === "dark" ? "text-green-300" : "text-green-600"}`} />
             <h3 className="text-xl font-semibold">Found Items</h3>
             <p className="text-2xl font-bold">{foundItems}</p>
-          </div>
+          </motion.div>
         </div>
       )}
     </div>

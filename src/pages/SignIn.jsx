@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
@@ -7,7 +8,7 @@ import { Helmet } from 'react-helmet-async';
 import UseTheme from '../hooks/UseTheme';
 
 const SignIn = () => {
-   const { theme } = UseTheme(); // Get the current theme (light/dark)
+   const { theme } = UseTheme();
    const { signInUser, setUser, signInWithGoogle } = useAuth();
    const [errorMessage, setErrorMessage] = useState(null);
 
@@ -29,7 +30,6 @@ const SignIn = () => {
       const form = e.target;
       const email = form.email.value;
       const password = form.password.value;
-      const user = { email, password };
       setErrorMessage('');
 
       signInUser(email, password)
@@ -66,7 +66,16 @@ const SignIn = () => {
    return (
       <div className={`min-h-screen flex justify-center items-center ${theme === 'dark' ? 'dark' : ''}`}>
         <Helmet><title>Login Page</title></Helmet>
-        <div className={`card border-l-4 border-red-800 w-full max-w-lg shrink-0 shadow-2xl p-10 ${theme === 'dark' ? 'bg-gradient-to-r from-slate-900 to-blue-900 text-white' : 'bg-[linear-gradient(25deg,#06105A_1%,_white_30%,_white_70%,#f4f4f5_100%)]'}`}>
+        <motion.div
+  className={`card w-full max-w-lg shrink-0 shadow-2xl p-10 
+    ${theme === 'dark' 
+      ? 'bg-gradient-to-r from-slate-900 to-blue-900 text-white' 
+      : 'bg-[linear-gradient(225deg,_#ffffff,_#d0e3f3,_#f8bfbb)]'
+    }`}
+  animate={{ borderColor: ["#7810c4", "#9bea71", "#f5c05e", "#e555d4", "#69dded"] }}
+  transition={{ duration: 3, repeat: Infinity }}
+  style={{ borderLeftWidth: '4px', borderRightWidth:'4px',borderStyle: 'solid' }}
+>
           <h2 className={`font-semibold text-2xl text-center mt-5 ${theme=== "dark"? "text-slate-400":"text-red-800"}`}>Login Your Account</h2>
           <form onSubmit={handleSignIn} className="card-body">
             <div className="form-control">
@@ -104,7 +113,7 @@ const SignIn = () => {
           <p className="text-center text-gray-600 font-semibold">
             Don't Have an account? <Link className={`${theme=== "dark"?"text-red-400":"text-red-800"}`} to="/signUp">Register</Link>
           </p>
-        </div>
+        </motion.div>
       </div>
    );
 };

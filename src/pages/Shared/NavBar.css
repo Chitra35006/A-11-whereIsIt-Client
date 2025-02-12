@@ -9,38 +9,47 @@
   display: inline-block;
 }
 
-/* In Dark Theme, adjust border color and text color */
+/* In Dark Theme, adjust border color and text color for active link */
 body[data-theme="dark"] .active-link {
   border-color: rgb(85, 85, 255);
   color: #93c5fd; /* Indigo-200 */
 }
 
-/* Inactive Link Styles */
-.inactive-link {
-  color: rgb(17, 1, 73);
+/* Inactive Link Styles for Light Theme */
+body[data-theme="light"] .inactive-link {
+  color: rgb(236, 234, 243); /* Light theme inactive text */
   font-weight: semi-bold;
   padding: 0 10px;
   display: inline-block;
 }
 
-/* In Dark Theme, inactive link color change */
+/* Inactive Link Styles for Dark Theme */
 body[data-theme="dark"] .inactive-link {
-  color: #93c5fd; /* Indigo-200 */
+  color: #cbd5e1; /* Light gray text for dark theme */
+  font-weight: semi-bold;
+  padding: 0 10px;
+  display: inline-block;
 }
 
 /* Inactive Link Hover */
 .inactive-link:hover {
   font-weight: bold;
   background-color: rgb(185, 4, 4);
-  color: white;
+  color: rgb(9, 3, 59);
   border: none;
   outline: none;
   padding: 0 10px;
   display: inline-block;
 }
 
-/* Dark Theme Hover */
+/* Dark Theme Hover for Inactive Link */
 body[data-theme="dark"] .inactive-link:hover {
   background-color: rgb(85, 85, 255);
+  color: white;
+}
+
+/* Light Theme Hover for Inactive Link */
+body[data-theme="light"] .inactive-link:hover {
+  background-color: rgb(185, 4, 4);
   color: white;
 }
