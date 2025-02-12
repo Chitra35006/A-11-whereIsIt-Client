@@ -3,8 +3,10 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 import { BsPersonCircle } from 'react-icons/bs';
 import { AiOutlineEye } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import UseTheme from '../../hooks/UseTheme';
 
 const AllLostFoundCard = ({post1}) => {
+  const {theme} = UseTheme();
     const {post,
        _id,
         photo,
@@ -17,8 +19,8 @@ const AllLostFoundCard = ({post1}) => {
         date} = post1;
         const buttonColor = post1.post === "Lost" ? "text-red-700 " : "text-green-700";
     return (
-        <div className="w-11/12 mx-auto max-w-sm mt-2 bg-indigo-50 border-indigo-200
- rounded-lg overflow-hidden border shadow-md flex flex-col">
+        <div className={`w-11/12 mx-auto max-w-sm mt-2 
+ rounded-lg overflow-hidden border shadow-md flex flex-col ${theme === "dark"?"bg-slate-950 border-slate-700":"bg-indigo-50 border-indigo-200"}`}>
       <div className="flex items-center p-4 border-b">
         <img
           src={photo}

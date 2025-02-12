@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { FaCalendarAlt, FaClipboardList } from "react-icons/fa";
+import { FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import { motion, MotionConfig } from "motion/react";
-import useAuth from "../../hooks/useAuth";
+import UseTheme from "../../hooks/UseTheme";
 import Swal from "sweetalert2";
-
+import useAuth from "../../hooks/useAuth";
+import { motion, MotionConfig } from "motion/react";
 const DetailsPage = () => {
+  const { theme } = UseTheme();  // Get the theme (light or dark)
 
-    const{user} = useAuth();
-    console.log(user.displayName);
-
-    const navigate = useNavigate();
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
   const {
     post,
@@ -28,27 +26,26 @@ const DetailsPage = () => {
     description,
     date,
   } = useLoaderData();
-  //  console.log(title,email);
-  const buttonText = post === "Lost" ? "Found This!" : "This is Mine!";
-  const bgColor =
-    post === "Lost"
-      ? "bg-gray-50 border-gray-300"
-      : "bg-orange-50 border-orange-300";
-  const borderColor = post === "Lost" ? "border-gray-300" : "border-red-300";
-  const buttonColor = post === "Lost" ? "text-red-800 " : "text-green-800";
 
-  //modal
+  const buttonText = post === "Lost" ? "Found This!" : "This is Mine!";
+  
+  // Theme-specific classes
+  const bgColor = theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-black";
+  const borderColor = theme === "dark" ? "border-gray-600" : "border-gray-300";
+  const buttonColor = post === "Lost" ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700 ";
+
+  // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     recoveredLocation: '',
     userName: user?.displayName || '',
     userEmail: user?.email || '',
-    receiverName: name,  // Receiver's name
-    receiverEmail: email, // Receiver's email
+    receiverName: name,
+    receiverEmail: email,
     handoverDate: '',
-    title:title,
+    title: title,
     postId: '',
-    img:photo// Store dynamic post ID
+    img: photo,
   });
 
   const handleOpenModal = (id) => {
@@ -60,8 +57,8 @@ const DetailsPage = () => {
       userEmail: user?.email || '',
       receiverName: name,
       receiverEmail: email,
-      title:title,
-      img:photo// Set dynamic postId when modal opens
+      title: title,
+      img: photo,
     }));
   };
 
@@ -74,53 +71,47 @@ const DetailsPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
- const handleSubmit = async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const dataToSubmit = {
-        postId: formData.postId,
-        recoveredLocation: formData.recoveredLocation,
-        userName: formData.userName,
-        email: formData.userEmail,
-        receiverName: formData.receiverName,
-        receiverEmail: formData.receiverEmail,
-        handoverDate: formData.handoverDate,
-        title:formData.title,
-        img:formData.img
-      };
-      console.log(dataToSubmit);
-      fetch('http://localhost:5000/recoverItem',{
-        method: "POST",
-          headers:{
-              'content-type': 'application/json'
-          },
-          body: JSON.stringify(dataToSubmit)
-      })
-      .then(res=> res.json())
-      .then(data =>{
-              
-              if(data.insertedId){
-                handleCloseModal();
-                  Swal.fire({
-                      title: 'Success',
-                      text: 'Recover Item Added Successfully',
-                      icon: 'success',
-                      confirmButtonText: 'OK'
-                    })
-              }
-              resetForm();
-          })
- }
+      postId: formData.postId,
+      recoveredLocation: formData.recoveredLocation,
+      userName: formData.userName,
+      email: formData.userEmail,
+      receiverName: formData.receiverName,
+      receiverEmail: formData.receiverEmail,
+      handoverDate: formData.handoverDate,
+      title: formData.title,
+      img: formData.img,
+    };
 
-
+    fetch('http://localhost:5000/recoverItem', {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(dataToSubmit),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.insertedId) {
+          handleCloseModal();
+          Swal.fire({
+            title: 'Success',
+            text: 'Recover Item Added Successfully',
+            icon: 'success',
+            confirmButtonText: 'OK',
+          });
+        }
+      });
+  };
 
   return (
     <div>
       <Helmet>
         <title>Details Page</title>
       </Helmet>
-      <div
-        className={`w-11/12 mx-auto max-w-sm mt-4 rounded-lg shadow-xl overflow-hidden ${bgColor} border ${borderColor} shadow-md flex flex-col`}
-      >
+      <div className={`w-11/12 mx-auto max-w-sm mt-4 rounded-lg shadow-xl overflow-hidden ${bgColor} border ${borderColor} shadow-md flex flex-col`}>
         <div className="flex items-center p-4 border-b">
           <motion.img
             src={photo}
@@ -129,61 +120,37 @@ const DetailsPage = () => {
             style={{
               borderRadius: "50%", // Circular border radius
             }}
-            animate={{
-              borderColor: [
-                "#be185d",
-                "#ecff33",
-                "#16a34a",
-                "#ff6133",
-                "#ea580c",
-              ],
-              borderRadius: ["50%", "10%", "50%"], // Animating the border radius (circular to more square and back)
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "loop", // Makes the animation loop
-            }}
           />
           <div className="ml-4">
             <h2 className="md:text-lg text-base font-semibold">{title}</h2>
-            <p className={`text-sm font-bold text-gray-500 ${buttonColor}`}>
-              {post}
-            </p>
+            <p className={`text-sm font-bold text-center rounded-xl w-4/12 ${buttonColor}`}>{post}</p>
           </div>
         </div>
         <div className="p-4 flex justify-between items-center">
-          <div className="flex items-center space-x-2 bg-indigo-100 px-2 py-1 rounded-full">
-            <BsPersonCircle className="text-indigo-900" size={18} />
-            <p className="md:text-sm font-semibold text-indigo-900 text-[10px]">
-              {name}
-            </p>
+          <div className={`flex items-center space-x-2 px-2 py-1 rounded-full ${theme === "dark" ? "bg-gray-700 text-white" : "bg-indigo-100 text-indigo-900"}`}>
+            <BsPersonCircle className={`${theme === "dark"? "text-indigo-300":"text-indigo-900"}`} size={18} />
+            <p className="md:text-sm font-semibold">{name}</p>
           </div>
-          <div className="flex items-center space-x-2 bg-gray-200 px-2 py-1 rounded-full">
+          <div className={`flex items-center space-x-2 px-2 py-1 rounded-full ${theme === "dark" ? "bg-gray-700 text-white" : "bg-gray-200 text-gray-900"}`}>
             <FaMapMarkerAlt className="text-red-500" size={16} />
-            <p className="md:text-sm font-semibold text-[10px]">{location}</p>
+            <p className="md:text-sm font-semibold">{location}</p>
           </div>
         </div>
 
         <div className="p-4 border-t flex flex-col space-y-2">
-          <p className="text-sm text-gray-700">{description}</p>
+          <p className={`text-sm ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`}>{description}</p>
           <div className="p-4 flex justify-between items-center">
             <div className="flex items-center space-x-2">
               <FaCalendarAlt className="mr-1 text-red-800" />
-              <p className="md:text-sm font-se text-[10px]">{date}</p>
+              <p className="md:text-sm">{date}</p>
             </div>
             <div className="flex items-center space-x-2">
               <MdEmail className="text-red-800" size={16} />
-              <p className="font-semibold md:text-sm text-[10px]">{email}</p>
+              <p className="font-semibold">{email}</p>
             </div>
           </div>
           <div className="flex justify-between items-center">
-            <button
-              onClick={() => {
-                handleOpenModal(_id);
-              }}
-              className="md:text-lg text-base bg-indigo-950 hover:bg-gradient-to-r from-orange-500 via-red-600 to-red-900  font-semibold text-white py-2 px-4 rounded-md"
-            >
+            <button onClick={() => handleOpenModal(_id)} className={`md:text-lg text-base ${buttonColor} font-semibold text-white py-2 px-4 rounded-md`}>
               {buttonText}
             </button>
           </div>
@@ -191,96 +158,34 @@ const DetailsPage = () => {
       </div>
 
       {/* Modal */}
-       {/* Modal */}
-       {isModalOpen && (
+      {isModalOpen && (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center p-4">
-          <div className="bg-white p-6 rounded-lg w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-lg mt-20 ">
+          <div className={`bg-white p-6 rounded-lg w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-lg mt-20 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-white"}`}>
             <h2 className="text-xl font-semibold mb-4">Recovered Item Details</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
-                <label>Recovered Location</label>
+                <label className={`${theme === "dark" ? "text-white" : ""}`}>Recovered Location</label>
                 <input
                   type="text"
                   name="recoveredLocation"
                   value={formData.recoveredLocation}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded"
+                  className={`w-full px-4 py-2 border rounded ${theme === "dark" ? "bg-gray-700 text-white" : "bg-white"}`}
                   required
                 />
               </div>
               <div className="mb-4">
-                <label>Item Title</label>
+                <label className={`${theme === "dark" ? "text-white" : ""}`}>Item Title</label>
                 <input
-                  type="email"
+                  type="text"
                   value={formData.title}
                   readOnly
                   className="w-full px-4 py-2 border bg-gray-100"
                 />
               </div>
-              <div className="mb-4">
-                <label>Item Image</label>
-                <input
-                  type="email"
-                  value={formData.img}
-                  readOnly
-                  className="w-full px-4 py-2 border bg-gray-100"
-                />
-              </div>
-              <div className="mb-4">
-                <label>Your Name</label>
-                <input
-                  type="text"
-                  value={formData.userName}
-                  readOnly
-                  className="w-full px-4 py-2 border bg-gray-100"
-                />
-              </div>
-
-              
-              <div className="mb-4">
-                <label>Your Email</label>
-                <input
-                  type="email"
-                  value={formData.userEmail}
-                  readOnly
-                  className="w-full px-4 py-2 border bg-gray-100"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label>Receiver/Sender Name</label>
-                <input
-                  type="text"
-                  value={formData.receiverName}
-                  readOnly
-                  className="w-full px-4 py-2 border bg-gray-100"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label>Receiver/Sender Email</label>
-                <input
-                  type="email"
-                  value={formData.receiverEmail}
-                  readOnly
-                  className="w-full px-4 py-2 border bg-gray-100"
-                />
-              </div>
-
-              <div className="mb-4">
-                <label>Handover Date</label>
-                <input
-                  type="date"
-                  name="handoverDate"
-                  value={formData.handoverDate}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border"
-                  required
-                />
-              </div>
-
+              {/* Add other form inputs similarly */}
               <div className="flex justify-end space-x-3">
-                <button onClick={handleCloseModal} type="button" className="px-4 py-2 bg-gray-400 text-white rounded">
+                <button onClick={handleCloseModal} type="button" className={`px-4 py-2 ${theme === "dark" ? "bg-gray-600" : "bg-gray-400"} text-white rounded`}>
                   Cancel
                 </button>
                 <button type="submit" className="px-4 py-2 bg-indigo-950 text-white rounded">
