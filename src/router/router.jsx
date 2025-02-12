@@ -14,6 +14,7 @@ import UpdatePost from "../pages/UpdatePost/UpdatePost";
 import DetailsPage from "../pages/DetailsPage/DetailsPage";
 import Four04Page from "../pages/Shared/Four04Page";
 import PrivateRoute from "./PrivateRoute";
+import About from "../pages/Shared/AboutUs/About"
 
   const router = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ import PrivateRoute from "./PrivateRoute";
         {
           path:'/allItems',
           element:<LostFoundAllItem></LostFoundAllItem>
+        },
+        {
+          path:'/aboutUs',
+          element:<About></About>
         },
         {
           path:'/allPostViewDetails/:id',

@@ -12,10 +12,10 @@ const LatestItem = () => {
 
   return (
     <div className="w-11/12 md:my-10 md:mb-0 mb-6  mx-auto">
-      <h1 className="border border-gray-300 md:text-2xl text-xl text-center bg-gray-200 p-2 text-red-800  font-medium md:w-3/12 w-6/12 mb-6">
+      <h1 className="border-b-4 border-r-4 rounded-2xl border-red-600 md:text-2xl text-xl text-center bg-red-100 p-2 text-red-600  font-medium md:w-3/12 w-6/12 mb-6">
         Latest Post
       </h1>
-      <div className="grid bg-gray-50 p-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid bg-gray-200 p-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {singlePostData.map((post) => (
           <div
             key={post._id}
@@ -71,7 +71,7 @@ const LatestItem = () => {
         ))}
       </div>
       <div className="flex justify-center">
-        <button className="btn text-xl mx-auto w-4/12 md:w-3/12 text-blue-950 font-semibold">
+        <button className="btn text-xl mx-auto w-4/12 md:w-3/12 text-blue-950 font-semibold hover:bg-red-300 hover:border-none">
           <Link to="/allItems">See All</Link>
         </button>
       </div>
