@@ -29,7 +29,7 @@ const TotalItem = () => {
 
   return (
     <div
-      className={`w-10/12 mx-auto mt-20 rounded-3xl p-4 
+      className={`w-10/12 mx-auto mt-20 rounded-3xl p-4 overflow-hidden
         ${theme === "dark" 
           ? "bg-gradient-to-r from-gray-900 to-indigo-950" 
           : "bg-indigo-950"}`}

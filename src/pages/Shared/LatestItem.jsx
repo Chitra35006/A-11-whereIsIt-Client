@@ -26,7 +26,7 @@ const LatestItem = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="w-11/12 md:my-10 md:mb-0 mb-6 mx-auto"
+      className="w-11/12 md:my-10 md:mb-0 mb-6 mx-auto overflow-hidden"
     >
       <h1
         className={`border-b-4 border-r-4 rounded-2xl border-red-600 md:text-2xl text-xl text-center p-2 text-red-600 font-medium md:w-3/12 w-6/12 mb-6 ${theme === "dark" ? "bg-slate-950" : "bg-red-100"}`}

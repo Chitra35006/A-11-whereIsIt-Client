@@ -17,7 +17,7 @@ import UseTheme from '../hooks/UseTheme';
 const Description = () => {
   const {theme} = UseTheme();
     return (
-        <div className={`mx-auto w-11/12 min-h-screen  p-6 mt-20 ${theme === "dark"?"bg-slate-950":"bg-gray-100"} `}>
+        <div className={`mx-auto w-11/12 min-h-screen  p-6 mt-20 overflow-hidden ${theme === "dark"?"bg-slate-950":"bg-gray-100"} `}>
           <h1 className='mt-6 mx-auto  md:w-3/12 md:my-2 text-center font-semibold text-lg bg-blue-950 text-white rounded-sm p-2'>Newsfeed</h1>
       <div className="grid grid-cols-1 mt-10 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Big Card */}

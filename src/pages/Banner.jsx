@@ -32,7 +32,7 @@ const Banner = () => {
         },
       ];
     return (
-        <div className='mx-auto' style={{ width: "100%", padding: "0 0" }}>
+        <div className='mx-auto overflow-hidden' style={{ width: "100%", padding: "0 0" }}>
       <Swiper
         modules={[EffectCoverflow, Pagination, Autoplay]}
         effect="coverflow"

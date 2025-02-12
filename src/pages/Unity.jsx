@@ -12,7 +12,7 @@ const Unity = () => {
 
   return (
     <div
-      className={`p-8 rounded-lg mx-auto w-11/12 mt-20 ${theme === "dark" ? "bg-slate-900" : "bg-slate-50"}`}
+      className={`p-8 rounded-lg mx-auto w-11/12 mt-20 overflow-hidden ${theme === "dark" ? "bg-slate-900" : "bg-slate-50"}`}
     >
       {/* Title with Red-Indigo Gradient */}
       <h2
