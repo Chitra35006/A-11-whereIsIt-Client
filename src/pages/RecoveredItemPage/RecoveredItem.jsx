@@ -3,11 +3,13 @@ import { Helmet } from 'react-helmet-async';
 import Recovertable from './Recovertable';
 import useAuth from '../../hooks/useAuth';
 import UseTheme from '../../hooks/UseTheme';
+import Loading from '../../Loading'; // Import the Loading component
 
 const RecoveredItem = () => {
     const { user } = useAuth();
     const { theme } = UseTheme();
     const [rItems, setRitems] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (user?.email) {
@@ -15,10 +17,12 @@ const RecoveredItem = () => {
                 .then(res => res.json())
                 .then(data => {
                     setRitems(Array.isArray(data) ? data : []);
+                    setLoading(false);
                 })
                 .catch(err => {
                     console.error('Error fetching recovered items:', err);
                     setRitems([]);
+                    setLoading(false);
                 });
         }
     }, [user?.email]);
@@ -33,37 +37,41 @@ const RecoveredItem = () => {
                 All Recovered Item List
             </h1>
 
-            <div className="overflow-x-auto">
-                <table className={`table w-full ${theme === 'dark' ? 'bg-gray-950 text-white' : 'bg-white text-black'}`}>
-                    <thead>
-                        <tr className={`${theme === 'dark' ? 'bg-gray-700 text-orange-400' : 'text-orange-500'}`}>
-                            <th></th>
-                            <th>Title</th>
-                            <th>Recovered Location</th>
-                            <th>HandOver Date</th>
-                            <th>Receiver Info</th>
-                            <th>Your Info</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {rItems.length > 0 ? (
-                            rItems.map((rItem, index) => (
-                                <Recovertable
-                                    key={rItem._id}
-                                    idx={index}
-                                    rItem={rItem}
-                                />
-                            ))
-                        ) : (
-                            <tr>
-                                <td colSpan="6" className="text-center p-4">
-                                    No Recovered Item Found
-                                </td>
+            {loading ? (
+                <Loading /> // Show loading component while fetching data
+            ) : (
+                <div className="overflow-x-auto">
+                    <table className={`table w-full ${theme === 'dark' ? 'bg-gray-950 text-white' : 'bg-white text-black'}`}>
+                        <thead>
+                            <tr className={`${theme === 'dark' ? 'bg-gray-700 text-orange-400' : 'text-orange-500'}`}>
+                                <th></th>
+                                <th>Title</th>
+                                <th>Recovered Location</th>
+                                <th>HandOver Date</th>
+                                <th>Receiver Info</th>
+                                <th>Your Info</th>
                             </tr>
-                        )}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            {rItems.length > 0 ? (
+                                rItems.map((rItem, index) => (
+                                    <Recovertable
+                                        key={rItem._id}
+                                        idx={index}
+                                        rItem={rItem}
+                                    />
+                                ))
+                            ) : (
+                                <tr>
+                                    <td colSpan="6" className="text-center p-4">
+                                        No Recovered Item Found
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </div>
     );
 };

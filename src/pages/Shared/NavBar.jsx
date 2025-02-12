@@ -111,7 +111,14 @@ const NavBar = () => {
          ):
          (
           
-            <Link to="/signIn" ><button className="btn border-red-800 border hover:border-none text-red-800 hover:text-white hover:bg-gradient-to-r from-red-500 via-red-600 to-red-900 ">Login</button></Link>
+<Link to="/signIn">
+  <button className={`btn border-red-800 border hover:border-none 
+      text-red-800 hover:text-white 
+      hover:bg-gradient-to-r from-red-500 via-red-600 to-red-900 
+      ${theme === 'dark' ? 'bg-gray-800 text-white border-white' : 'bg-white text-red-800 border-red-800'}`}>
+    Login
+  </button>
+</Link>
           
          )
 
