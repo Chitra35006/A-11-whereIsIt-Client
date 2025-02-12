@@ -46,7 +46,7 @@ const AllLostFoundCard = ({post1}) => {
         > 
           <AiOutlineEye size={18} />
           <Link to={`/allPostViewDetails/${_id}`}>
-          <span>View Details</span></Link>
+          <span>See More</span></Link>
         </button>
       </div>
     </div>

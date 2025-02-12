@@ -1,15 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdArrowRoundBack } from "react-icons/io";
+import Lottie from "lottie-react";
+import Four04Animation from "../../assets/Animation404.json"; // Make sure to place the JSON file inside `assets`
 
 const Four04Page = () => {
     return (
-        <div className='flex flex-col justify-center items-center'>
-            <h2 className='text-5xl font-bold text-center my-auto mx-auto text-green-500'>404!!!</h2>
-            <p className='text-red-500'>This Page is not available</p>
-            <div>
-            <Link to='/' className="btn bg-orange-400 hover:bg-blue-600 hover:text-white font-bold text-blue-900 border-none"> <span><IoMdArrowRoundBack /></span> Home</Link>
+        <div className='flex flex-col justify-center items-center min-h-screen text-center'>
+            {/* Lottie Animation */}
+            <div className="w-72 md:w-96">
+                <Lottie animationData={Four04Animation} loop={true} />
             </div>
+
+            {/* 404 Text */}
+     
+            <p className='text-red-700 font-bold mt-2'>This page is not available</p>
+
+            {/* Home Button */}
+            <Link to='/' className="btn flex items-center gap-2 bg-indigo-950 hover:bg-blue-600 hover:text-white font-bold text-blue-300 border-none px-4 py-2 mt-4 rounded-lg">
+                <IoMdArrowRoundBack className="text-xl" /> Home
+            </Link>
         </div>
     );
 };

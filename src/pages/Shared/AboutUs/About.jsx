@@ -43,7 +43,7 @@ const About = () => {
           href="/get-started"
           className="inline-block bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-6 rounded-lg transition"
         >
-          Get Started
+          Explore Now
         </a>
       </div>
     </section>

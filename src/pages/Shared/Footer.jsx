@@ -27,7 +27,7 @@ const Footer = () => {
                 placeholder="username@site.com"
                 className="input input-bordered join-item mb-2 md:mb-0"
               />
-              <button className="btn bg-gradient-to-r from-red-500 via-red-600 to-red-700 text-white hover:text-rose-200 join-item">Subscribe</button>
+              <button className="btn bg-gradient-to-r from-red-500 via-red-600 to-red-900 text-white hover:text-rose-200 join-item">Subscribe</button>
             </div>
           </fieldset>
         </form>

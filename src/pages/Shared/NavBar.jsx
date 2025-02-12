@@ -6,9 +6,12 @@ import { easeOut } from 'motion';
 import useAuth from '../../hooks/useAuth';
 import ProfileDropDown from './ProfileDropDown';
 import './NavBar.css'
+import { FaSun, FaMoon } from "react-icons/fa";
+import UseTheme from '../../hooks/UseTheme';
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const { theme, toggleTheme } = UseTheme();
 
     const{user,logOut} = useAuth();
 
@@ -24,7 +27,7 @@ const NavBar = () => {
       
     </>
     return (
-        <div className="navbar bg-[#f7eff3] shadow-md fixed top-0 left-0 right-0 z-50 w-full px-2">
+        <div className="navbar bg-[#f7eff3] shadow-md fixed top-0 left-0 right-0 z-50 w-full px-4">
         {/* Navbar Start */}
         <div className="navbar-start">
           
@@ -51,7 +54,7 @@ const NavBar = () => {
             <motion.h1 
             animate={{ x: 50 }}
             transition={{ duration: 2, delay: 1, ease: easeOut, repeat: Infinity }}
-            className="ml-2 md:text-2xl text-lg text-red-800">Where
+            className="ml-2 md:text-2xl text-lg text-red-800 hidden lg:block">Where
             <motion.span 
             animate={{ color: ['#be185d','#ecff33', '#16a34a', '#ff6133','#ea580c'] }}
             transition={{ duration: 1.5, repeat: Infinity }}
@@ -71,6 +74,7 @@ const NavBar = () => {
          { user && user?.email?(
            <>
            <ProfileDropDown user={user}></ProfileDropDown>
+          
            <button onClick={logOut} className="btn ml-2 text-white hover:text-yellow-200  bg-gradient-to-r from-red-500 via-red-600 to-red-900 ">Logout</button>
            </>
          ):
@@ -81,6 +85,9 @@ const NavBar = () => {
          )
 
          }
+          <button onClick={toggleTheme} className="btn btn-ghost ml-2 border-gray-600 rounded-lg">
+    {theme === "dark" ? <FaSun /> : <FaMoon />}
+  </button>
         </div>
   
         {/* Mobile Dropdown */}

@@ -1,7 +1,9 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaCalendarAlt, FaClipboardList } from "react-icons/fa";
-import { AiOutlineEye } from "react-icons/ai";
+
+import { AiOutlineArrowRight} from "react-icons/ai";
+
 
 const LatestItem = () => {
   const singlePostData = useLoaderData(); // Assuming this is an array of posts
@@ -60,10 +62,10 @@ const LatestItem = () => {
               >
                 <button
                   type="button"
-                  className="w-full px-3 focus:outline-none focus:ring-0 hover:outline-none md:text-lg text-base bg-indigo-950 hover:bg-gradient-to-r from-orange-500 via-red-600 to-red-900 text-white font-semibold py-2 rounded-md flex items-center justify-center gap-2"
+                  className="w-full px-3 focus:outline-none focus:ring-0 hover:outline-none md:text-lg text-base bg-indigo-950 hover:bg-gradient-to-r from-red-500 via-red-600 to-red-900 text-white font-semibold py-2 rounded-md flex items-center justify-center gap-2"
                 >
-                  <AiOutlineEye size={18} />
-                  <span>View Details</span>
+                  < AiOutlineArrowRight size={18} />
+                  <span>See More</span>
                 </button>
               </Link>
             </div>

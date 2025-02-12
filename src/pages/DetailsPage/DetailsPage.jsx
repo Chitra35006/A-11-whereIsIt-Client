@@ -34,7 +34,7 @@ const DetailsPage = () => {
     post === "Lost"
       ? "bg-gray-50 border-gray-300"
       : "bg-orange-50 border-orange-300";
-  const borderColor = post === "Lost" ? "border-gray-300" : "border-orange-300";
+  const borderColor = post === "Lost" ? "border-gray-300" : "border-red-300";
   const buttonColor = post === "Lost" ? "text-red-800 " : "text-green-800";
 
   //modal
@@ -119,7 +119,7 @@ const DetailsPage = () => {
         <title>Details Page</title>
       </Helmet>
       <div
-        className={`w-11/12 mx-auto max-w-sm mt-4 rounded-lg overflow-hidden ${bgColor} border ${borderColor} shadow-md flex flex-col`}
+        className={`w-11/12 mx-auto max-w-sm mt-4 rounded-lg shadow-xl overflow-hidden ${bgColor} border ${borderColor} shadow-md flex flex-col`}
       >
         <div className="flex items-center p-4 border-b">
           <motion.img

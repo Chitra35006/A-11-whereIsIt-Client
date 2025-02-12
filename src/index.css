@@ -3,3 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-color: #ffffff; /* Light mode background */
+     /* Light mode text color */
+  }
+  
+  html.dark body {
+    background-color: #020b1b; /* Dark mode background */
+    /* Dark mode text color */
+  }
+  
