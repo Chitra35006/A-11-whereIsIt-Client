@@ -12,13 +12,16 @@ import 'swiper/css/pagination';
 import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
 import { motion } from 'framer-motion';
 
+import UseTheme from '../hooks/UseTheme';
+
 const Description = () => {
+  const {theme} = UseTheme();
     return (
-        <div className="mx-auto w-11/12 min-h-screen bg-gray-100 p-6 mt-20 ">
+        <div className={`mx-auto w-11/12 min-h-screen  p-6 mt-20 ${theme === "dark"?"bg-slate-950":"bg-gray-100"} `}>
           <h1 className='mt-6 mx-auto  md:w-3/12 md:my-2 text-center font-semibold text-lg bg-blue-950 text-white rounded-sm p-2'>Newsfeed</h1>
       <div className="grid grid-cols-1 mt-10 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Big Card */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden sm:col-span-2">
+        <div className={` rounded-lg shadow-lg overflow-hidden sm:col-span-2 ${theme === "dark"?"bg-slate-900":"bg-white"}`}>
           <img
             src={phone}
             alt="New Year UI Bundle"
@@ -28,7 +31,7 @@ const Description = () => {
             <div className="absolute top-4 right-4 bg-blue-950 text-white px-3 py-1 rounded-full text-xs">
               21 Jan
             </div>
-            <h3 className="text-xl font-bold text-gray-800">
+            <h3 className={`text-xl font-bold ${theme === "dark"?"text-gray-300":"text-gray-800"}`}>
               Found A Phone <br />
               12/A Elephant Street
             </h3>
@@ -54,11 +57,11 @@ const Description = () => {
 
         {/* Smaller Cards */}
         {/* dog Cards */}
-        <div className="bg-gray-200 p-4 rounded-lg shadow-md">
+        <div className={`${theme === "dark"?"bg-slate-900":"bg-gray-200"} p-4 rounded-lg shadow-md`}>
         {/* Static Text Content */}
         <p className="text-sm text-center bg-indigo-950 text-white px-3 py-1 rounded-full sm:mb-4 mb-2">22 Dec</p>
-        <h3 className="sm:text-lg text-[12px] font-semibold">A Pet is Missing</h3>
-        <p className="sm:text-sm font-semibold text-[10px] text-red-800">Name: Jimmy</p>
+        <h3 className={`sm:text-lg text-[12px] font-semibold ${theme ==="dark"?"text-gray-300":"text-black"}`}>A Pet is Missing</h3>
+        <p className={`sm:text-sm font-semibold text-[10px] ${theme === "dark"?"text-red-300":"text-red-800"}`}>Name: Jimmy</p>
   
         {/* Swiper for Sliding Images */}
         <Swiper
