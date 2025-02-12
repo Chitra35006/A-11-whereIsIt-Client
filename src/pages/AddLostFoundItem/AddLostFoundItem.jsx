@@ -52,7 +52,7 @@ const resetForm = () => {
         }
         console.log(postData);
         //send Data to Server
-        fetch('https://a-11-where-is-it-server.vercel.app/addPost',{
+        fetch('http://localhost:5000/addPost',{
           method: "POST",
           headers:{
               'content-type': 'application/json'

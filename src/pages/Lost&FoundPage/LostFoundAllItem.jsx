@@ -9,7 +9,7 @@ const LostFoundAllItem = () => {
   const [viewMode, setViewMode] = useState("grid"); // grid or table view
 
   useEffect(() => {
-    fetch("https://a-11-where-is-it-server.vercel.app/addPost")
+    fetch("http://localhost:5000/addPost")
       .then((res) => res.json())
       .then((data) => {
         setPosts(data);

@@ -88,7 +88,7 @@ const DetailsPage = () => {
         img:formData.img
       };
       console.log(dataToSubmit);
-      fetch('https://a-11-where-is-it-server.vercel.app/recoverItem',{
+      fetch('http://localhost:5000/recoverItem',{
         method: "POST",
           headers:{
               'content-type': 'application/json'

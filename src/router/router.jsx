@@ -23,7 +23,7 @@ import PrivateRoute from "./PrivateRoute";
         {
             path:'/',
             element:<Home></Home>,
-            loader:()=>fetch('https://a-11-where-is-it-server.vercel.app/latestPost')
+            loader:()=>fetch('http://localhost:5000/latestPost')
         },
         // {
         //     path: '',
@@ -48,7 +48,7 @@ import PrivateRoute from "./PrivateRoute";
         {
           path:'/allPostViewDetails/:id',
           element:<PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
-          loader:({params})=> fetch(`https://a-11-where-is-it-server.vercel.app/addPost/${params.id}`)
+          loader:({params})=> fetch(`http://localhost:5000/addPost/${params.id}`)
         },
         {
           path:'/manageMyItems',
@@ -61,7 +61,7 @@ import PrivateRoute from "./PrivateRoute";
         {
           path:'/posting/:id',
           element:<PrivateRoute><UpdatePost></UpdatePost></PrivateRoute>,
-          loader:({params}) => fetch(`https://a-11-where-is-it-server.vercel.app/posting/${params.id}`)
+          loader:({params}) => fetch(`http://localhost:5000/posting/${params.id}`)
 
         }
       ]
