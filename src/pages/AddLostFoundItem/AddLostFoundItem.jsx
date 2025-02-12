@@ -85,7 +85,7 @@ const resetForm = () => {
         </p>
       </div>
       <div>
-        <div className="py-20 rounded-lg px-8 md:px-0 flex items-center justify-center bg-[linear-gradient(25deg,#fdba74_5%,_white_30%,_white_70%,#fca5a5_100%)]">
+        <div className="py-20 rounded-lg px-8 md:px-0 flex items-center justify-center bg-[linear-gradient(25deg,#D0D4E6_5%,_white_30%,_white_70%,#B1B9E6_100%)]">
         <div className="p-8 rounded-lg shadow-md w-full max-w-2xl bg-[#f7eff3]">
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

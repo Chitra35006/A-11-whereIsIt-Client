@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between">
           {/* Brand Section */}
           <div className="text-center md:text-left">
-            <h1 className="text-2xl font-bold"><span className="text-[#af2828]">Where<span className="text-orange-400">IsIt</span></span></h1>
+            <h1 className="text-2xl font-bold"><span className="text-[#af2828]">Where<span className="text-red-400">IsIt</span></span></h1>
             <p className="text-gray-400 mt-2">
               Bringing creativity to life, one step at a time.
             </p>
@@ -27,7 +27,7 @@ const Footer = () => {
                 placeholder="username@site.com"
                 className="input input-bordered join-item mb-2 md:mb-0"
               />
-              <button className="btn bg-gradient-to-r from-orange-400 via-orange-600 to-red-600 text-white hover:text-rose-200 join-item">Subscribe</button>
+              <button className="btn bg-gradient-to-r from-red-500 via-red-600 to-red-700 text-white hover:text-rose-200 join-item">Subscribe</button>
             </div>
           </fieldset>
         </form>
@@ -70,7 +70,7 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <hr className="my-6 border-orange-200" />
+        <hr className="my-6 border-red-600" />
 
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row items-center justify-between">

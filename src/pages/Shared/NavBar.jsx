@@ -24,7 +24,7 @@ const NavBar = () => {
       
     </>
     return (
-        <div className="navbar bg-[#f7eff3] shadow-md fixed top-0 left-0 right-0 z-50 w-full">
+        <div className="navbar bg-[#f7eff3] shadow-md fixed top-0 left-0 right-0 z-50 w-full px-2">
         {/* Navbar Start */}
         <div className="navbar-start">
           

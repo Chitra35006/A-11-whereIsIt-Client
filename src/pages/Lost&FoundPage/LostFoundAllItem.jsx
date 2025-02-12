@@ -54,7 +54,7 @@ const LostFoundAllItem = () => {
             onClick={() => setViewMode("grid")}
             className={`p-2 rounded ${
               viewMode === "grid"
-                ? "bg-gradient-to-r from-orange-400 via-orange-600 to-red-600 text-white"
+                ? "bg-gradient-to-r from-red-500 via-red-600 to-red-700 text-white"
                 : "bg-gray-200"
             }`}
           >
@@ -64,7 +64,7 @@ const LostFoundAllItem = () => {
             onClick={() => setViewMode("table")}
             className={`p-2 rounded ${
               viewMode === "table"
-                ? "bg-gradient-to-r from-orange-400 via-orange-600 to-red-600 text-white"
+                ? "bg-gradient-to-r from-red-500 via-red-600 to-red-700 text-white"
                 : "bg-gray-200"
             }`}
           >

@@ -14,7 +14,7 @@ import { motion } from 'framer-motion';
 
 const Description = () => {
     return (
-        <div className="mx-auto w-11/12 min-h-screen bg-gray-100 p-6">
+        <div className="mx-auto w-11/12 min-h-screen bg-gray-100 p-6 mt-20 ">
           <h1 className='mt-6 mx-auto  md:w-3/12 md:my-2 text-center font-semibold text-lg bg-blue-950 text-white rounded-sm p-2'>Newsfeed</h1>
       <div className="grid grid-cols-1 mt-10 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Big Card */}

@@ -81,7 +81,7 @@ const Register = () => {
     return (
         <div className="min-h-screen flex justify-center items-center">
           <Helmet><title>Sign Up</title></Helmet>
-        <div className="card border-l-4 border-red-800 bg-[linear-gradient(25deg,#fdba74_5%,_white_30%,_white_70%,#f4f4f5_100%)]  w-full max-w-lg shrink-0 shadow-2xl p-10">
+        <div className="card border-l-4 border-red-800 bg-[linear-gradient(25deg,#06105A_1%,_white_30%,_white_70%,#f4f4f5_100%)]  w-full max-w-lg shrink-0 shadow-2xl p-10">
           <h2 className="font-semibold text-2xl text-red-800 text-center mt-5 ">
             Register Your Account
           </h2>

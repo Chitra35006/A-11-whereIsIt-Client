@@ -78,7 +78,7 @@ const SignIn = () => {
     return (
         <div className="min-h-screen flex justify-center items-center">
           <Helmet><title>Login Page</title></Helmet>
-      <div className="card border-l-4 border-red-800 bg-[linear-gradient(25deg,#fdba74_5%,_white_30%,_white_70%,#f4f4f5_100%)]  w-full max-w-lg shrink-0 shadow-2xl p-10">
+      <div className="card border-l-4 border-red-800 bg-[linear-gradient(25deg,#06105A_1%,_white_30%,_white_70%,#f4f4f5_100%)]  w-full max-w-lg shrink-0 shadow-2xl p-10">
         <h2 className="font-semibold text-2xl text-center text-red-800 mt-5">Login Your Account</h2>
         <form onSubmit={handleSignIn} className="card-body">
           <div className="form-control">
@@ -112,7 +112,7 @@ const SignIn = () => {
               errorMessage && <p className="p-2 mt-2 font-semibold bg-red-300 text-red-700">{errorMessage}</p>
           }
         </form>
-        <button onClick={handleGoogleSignIn} type="button" className="btn border-none text-orange-900 bg-orange-200 mb-4 hover:bg-red-200 hover:text-red-700"><FaGoogle></FaGoogle> Login With Google</button>
+        <button onClick={handleGoogleSignIn} type="button" className="btn border-none text-indigo-300 bg-indigo-950 mb-4 hover:bg-indigo-200 hover:text-indigo-900"><FaGoogle></FaGoogle> Login With Google</button>
         <p className="text-center text-gray-600 font-semibold">Don't Have a account? <Link className="text-red-800" to="/signUp">Register</Link> </p>
       </div>
     </div>

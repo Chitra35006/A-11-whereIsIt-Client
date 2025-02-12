@@ -7,7 +7,7 @@ const About = () => {
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">About Us</h2>
         <p className="text-lg md:text-xl text-indigo-300">
-          Welcome to <span className="text-indigo-400 font-semibold">WhereIsIt</span>, a platform dedicated to helping people **reunite with their lost belongings**.
+          Welcome to <span className="text-red-400 font-semibold">WhereIsIt</span>, a platform dedicated to helping people **reunite with their lost belongings**.
           Whether you've found something or misplaced an item, our community-driven system helps bridge the gap.
         </p>
       </div>
