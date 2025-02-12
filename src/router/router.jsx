@@ -24,7 +24,7 @@ import About from "../pages/Shared/AboutUs/About"
         {
             path:'/',
             element:<Home></Home>,
-            loader:()=>fetch('http://localhost:5000/latestPost')
+            loader:()=>fetch('https://a-11-where-is-it-server.vercel.app/latestPost')
         },
         // {
         //     path: '',
@@ -53,7 +53,7 @@ import About from "../pages/Shared/AboutUs/About"
         {
           path:'/allPostViewDetails/:id',
           element:<PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
-          loader:({params})=> fetch(`http://localhost:5000/addPost/${params.id}`)
+          loader:({params})=> fetch(`https://a-11-where-is-it-server.vercel.app/addPost/${params.id}`)
         },
         {
           path:'/manageMyItems',
@@ -66,7 +66,7 @@ import About from "../pages/Shared/AboutUs/About"
         {
           path:'/posting/:id',
           element:<PrivateRoute><UpdatePost></UpdatePost></PrivateRoute>,
-          loader:({params}) => fetch(`http://localhost:5000/posting/${params.id}`)
+          loader:({params}) => fetch(`https://a-11-where-is-it-server.vercel.app/posting/${params.id}`)
 
         }
       ]

@@ -16,7 +16,7 @@ const LostFoundAllItem = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5000/addPost")
+    fetch("https://a-11-where-is-it-server.vercel.app/addPost")
       .then((res) => res.json())
       .then((data) => {
         setPosts(data);

@@ -51,7 +51,7 @@ const AddLostFoundItem = () => {
     };
     console.log(postData);
     // Send Data to Server
-    fetch('http://localhost:5000/addPost', {
+    fetch('https://a-11-where-is-it-server.vercel.app/addPost', {
       method: "POST",
       headers: {
         'content-type': 'application/json'

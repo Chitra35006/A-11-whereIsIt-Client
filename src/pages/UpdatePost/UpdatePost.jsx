@@ -40,7 +40,7 @@ const UpdatePost = () => {
             date:formattedDate
         }
         console.log(data);
-        fetch(`http://localhost:5000/posting/${id}`,{
+        fetch(`https://a-11-where-is-it-server.vercel.app/posting/${id}`,{
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json" ,
